@@ -1,7 +1,7 @@
 { mkDerivation, base, bytestring, containers, deepseq, doctest
-, exceptions, hashable, hedgehog, lens, mtl, QuickCheck, spiros
-, stdenv, tasty, tasty-hedgehog, tasty-quickcheck, text
-, transformers, unordered-containers
+, hashable, hedgehog, mtl, QuickCheck, reflex, reflex-dom
+, reflex-dom-core, spiros, stdenv, tasty, tasty-hedgehog
+, tasty-quickcheck, text, transformers, unordered-containers, vinyl
 }:
 mkDerivation {
   pname = "reflex-vinyl";
@@ -10,8 +10,8 @@ mkDerivation {
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
-    base bytestring containers deepseq exceptions hashable lens mtl
-    spiros text transformers unordered-containers
+    base bytestring containers deepseq hashable mtl reflex reflex-dom
+    reflex-dom-core spiros text transformers unordered-containers vinyl
   ];
   executableHaskellDepends = [ base ];
   testHaskellDepends = [
@@ -19,6 +19,6 @@ mkDerivation {
     tasty-quickcheck
   ];
   homepage = "http://github.com/sboosali/reflex-vinyl#readme";
-  description = "TODO";
+  description = "Convenience records for FRP Events and DOM Events";
   license = stdenv.lib.licenses.bsd3;
 }

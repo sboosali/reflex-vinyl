@@ -3,7 +3,7 @@
 
 # reflex-vinyl
 
-TODO 
+`vinyl` Records of `reflex` (and `reflex-dom`) Events / Behavior / Dynamics.
 
 ## Example
 

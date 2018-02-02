@@ -5,11 +5,11 @@ cabal-version:       >=1.24
 ----------------------------------------
 
 build-type:          Simple 
-category:            Data 
-synopsis:            TODO 
+category:            Data,Records,Reflex
+synopsis:            Convenience records for FRP Events and DOM Events
 description:         
  .
- TODO
+ @vinyl@ Records of @reflex@ (and @reflex-dom@) @Events@ \/ @Behaviors@ \/ @Dynamics@.
  . 
  See the source of "Reflex.Vinyl.Example" for an example.
  .
@@ -149,10 +149,15 @@ library
              , mtl
 
 -- ekmett 
-             , exceptions
-             , lens
+             -- , exceptions
+             -- , lens
 
 -- other packages 
+
+             , vinyl
+             , reflex
+             , reflex-dom-core
+             , reflex-dom
 
 ----------------------------------------
 -- EXECUTABLES

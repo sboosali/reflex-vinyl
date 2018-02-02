@@ -1,3 +1,3 @@
 #!/bin/bash
-SHELL_FILE=shell-reflex-vinyl.nix
+SHELL_FILE=./nix/reflex-vinyl-shell.nix
 nix-shell "$SHELL_FILE" --arg doBenchmark true --run "./configure.sh"

@@ -1,0 +1,6 @@
+========================================
+
+$ curl https://raw.githubusercontent.com/reflex-frp/reflex-dom/develop/reflex-dom-core/default.nix > nix/reflex-dom-core.nix
+$ curl https://raw.githubusercontent.com/reflex-frp/reflex-dom/develop/reflex-dom/default.nix      > nix/reflex-dom.nix
+
+========================================
