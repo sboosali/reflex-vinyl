@@ -24,7 +24,7 @@ import Reflex.Vinyl.Extra (SomeWidget_)
 --TODO reexport
 import Reflex
 import Reflex.Dom
-import Data.Vinyl
+--import Data.Vinyl
 import Control.Lens
 
 import System.Environment

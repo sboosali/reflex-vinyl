@@ -36,7 +36,7 @@ license-file:        LICENSE
 stability:           provisional
 tested-with:
   GHC == 8.2.2
--- GHC == 8.0.2
+  GHC == 8.0.2
 
 -- PVP
 -- https://wiki.haskell.org/Package_versioning_policy
