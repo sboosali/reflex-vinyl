@@ -5,9 +5,10 @@ let
   inherit (nixpkgs) pkgs;
 
   f = { mkDerivation, base, bytestring, containers, deepseq
-      , doctest, hashable, hedgehog, mtl, QuickCheck, reflex, reflex-dom
-      , reflex-dom-core, spiros, stdenv, tasty, tasty-hedgehog
-      , tasty-quickcheck, text, transformers, unordered-containers, vinyl
+      , doctest, hashable, hedgehog, lens, mtl, QuickCheck, reflex
+      , reflex-dom, reflex-dom-core, spiros, stdenv, tasty
+      , tasty-hedgehog, tasty-quickcheck, text, transformers
+      , unordered-containers, vinyl
       }:
       mkDerivation {
         pname = "reflex-vinyl";
@@ -16,8 +17,9 @@ let
         isLibrary = true;
         isExecutable = true;
         libraryHaskellDepends = [
-          base bytestring containers deepseq hashable mtl reflex reflex-dom
-          reflex-dom-core spiros text transformers unordered-containers vinyl
+          base bytestring containers deepseq hashable lens mtl reflex
+          reflex-dom reflex-dom-core spiros text transformers
+          unordered-containers vinyl
         ];
         executableHaskellDepends = [ base ];
         testHaskellDepends = [
