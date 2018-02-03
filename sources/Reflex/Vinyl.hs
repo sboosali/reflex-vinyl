@@ -1,10 +1,9 @@
 
 {-| 
 
-Examples prefixed by @>>> @ are @doctest@'ed. 
+Examples prefixed by @>>> @ are @doctest@'ed.
 
->>> stub
-"stub"
+
 
 -}
 module Reflex.Vinyl

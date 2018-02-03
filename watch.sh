@@ -1,2 +1,2 @@
 #!/bin/bash
-ghcid --command 'nix-shell --command "cabal repl"'
+ghcid -o ghcid.txt --command 'nix-shell --run "cabal repl reflex-vinyl"'
