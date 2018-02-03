@@ -93,6 +93,9 @@ type Widget_ x = Widget x ()
 
 ----------------------------------------
 
+{-| (just an alias) -}
+type DynamicAttributes t = Dynamic t AttributeMap
+
 ----------------------------------------
 
 s2t :: String -> Text

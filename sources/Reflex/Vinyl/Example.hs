@@ -1,4 +1,7 @@
 
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedLists #-}
+
 {-# OPTIONS_GHC -fno-warn-missing-signatures #-} -- to test inference
 
 {-| This module provides an example program. 
@@ -15,7 +18,14 @@ and there are minimal other dependencies.
 -}
 module Reflex.Vinyl.Example where
 
-import Reflex.Vinyl()
+import Reflex.Vinyl
+--TODO only public api
+import Reflex.Vinyl.Extra (SomeWidget_)
+--TODO reexport
+import Reflex
+import Reflex.Dom
+import Data.Vinyl
+import Control.Lens
 
 import System.Environment
 
@@ -39,7 +49,63 @@ main = do
   _ -> return ("")
  mainWith arguments
 
-mainWith s = do
- putStrLn s
- putStrLn "(Reflex.Vinyl.Example...)"
+mainWith _s = do
+ putStrLn "[Reflex.Vinyl.Example...]"
+ mainWidget myWidget
 
+myWidget :: SomeWidget_
+myWidget = do
+ let child = blank
+ 
+ (es_1, x) <- elFor'
+             (Click :& Mousemove :& RNil)
+             "div"
+             (constDyn mempty)
+             child
+ 
+ (es_2)   <- elFor
+             _MousingEvents
+             "div"
+             (constDyn mempty)
+             child
+
+ -- `_eClick_1 and `_eClick_2` are equivalent
+ 
+ let _eClick_1     = es_1 ^. event Click 
+ let _eMousemove_1 = es_1 ^. event Mousemove 
+
+ let _eClick_2     = es_2 ^. _Click 
+ let _eMousemove_2 = es_2 ^. _Mousemove
+
+ -- let eClick     = ( es ^. (rget Click     . _EventOf) ) 
+ -- let eMousemove = ( es ^. (rget Mousemove . _EventOf) )
+
+ return x
+
+{-
+
+ ClickTag
+ DblclickTag
+ MouseenterTag
+ MouseleaveTag
+
+
+myWidget :: SomeWidget_
+myWidget = do
+ let child = blank
+ 
+ (es,x) <- elFor'
+             (Click :& Mousemove :& RNil)
+             "div"
+             (constDyn mempty)
+             child
+ 
+ let _eClick     = es ^. event Click 
+ let _eMousemove = es ^. event Mousemove 
+
+ -- let eClick     = ( es ^. (rget Click     . _EventOf) ) 
+ -- let eMousemove = ( es ^. (rget Mousemove . _EventOf) )
+
+ return x
+
+-}

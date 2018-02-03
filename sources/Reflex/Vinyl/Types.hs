@@ -1,4 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
 
 {-| The core types. 
 
@@ -15,6 +14,8 @@ import Reflex
 import Reflex.Dom.Builder.Class.Events 
 
 import Data.Vinyl
+
+import qualified Control.Lens as L
 
 ----------------------------------------
 
@@ -103,8 +104,17 @@ Event t ()
 
 -}
 newtype EventOf t event 
- = EventOf (Event t (EventResultType event))
- 
+ = EventOf (DOMEvent t event)
+
+eventOf :: EventOf t event -> DOMEvent t event 
+eventOf (EventOf e) = e
+
+_EventOf :: L.Iso' (EventOf t event) (DOMEvent t event)
+_EventOf = L.iso eventOf EventOf
+
+type DOMEvent t event 
+ = Event t (EventResultType event)
+
 -- GADT? Use Coyoneda thing if must be a Functor?
 
 {-| 

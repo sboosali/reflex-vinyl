@@ -123,6 +123,7 @@ library
                  Reflex.Vinyl
                  Reflex.Vinyl.Types
                  Reflex.Vinyl.Core		
+                 Reflex.Vinyl.Events
                  Reflex.Vinyl.Example                
  other-modules:
 
@@ -150,7 +151,7 @@ library
 
 -- ekmett 
              -- , exceptions
-             -- , lens
+             , lens
 
 -- other packages 
 
