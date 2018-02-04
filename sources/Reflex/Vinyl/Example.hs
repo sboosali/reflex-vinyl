@@ -27,10 +27,9 @@ import Reflex.Dom
 --import Data.Vinyl
 import Control.Lens
 
-import qualified Lucid
-
+--import qualified Lucid
 --import qualified Data.ByteString.Lazy       as B
-import qualified Data.ByteString.Lazy.Char8 as B8
+--import qualified Data.ByteString.Lazy.Char8 as B8
 
 import System.Environment
 
@@ -57,9 +56,9 @@ main = do
 mainWith _s = do
  putStrLn "[Reflex.Vinyl.Example...]"
 
- B8.putStrLn $ Lucid.renderBS (Lucid.p_ [Lucid.style_ "color:red"] "Hello!")
+ -- B8.putStrLn $ Lucid.renderBS (Lucid.p_ [Lucid.style_ "color:red"] "Hello!")
 
- -- mainWidget myWidget
+ mainWidget myWidget
 
 myWidget :: SomeWidget_
 myWidget = do

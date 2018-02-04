@@ -130,6 +130,7 @@ library
                  Reflex.Attributes
                  Reflex.Attributes.HTML
                  Reflex.Attributes.CSS
+                 Reflex.Attributes.Loose
 
                  Reflex.Vinyl.Example                
  other-modules:
@@ -167,7 +168,8 @@ library
              , reflex-dom-core
              , reflex-dom
 
-             , lucid
+             -- , lucid
+             -- , clay
 
 ----------------------------------------
 -- EXECUTABLES

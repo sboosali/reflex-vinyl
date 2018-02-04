@@ -5,6 +5,7 @@ set -e
 cabal2nix . > ./default.nix
 
 ./provision.sh
+./build.sh
 
 ########################################
 #
