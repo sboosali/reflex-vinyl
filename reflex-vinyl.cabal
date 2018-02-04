@@ -126,6 +126,11 @@ library
                  Reflex.Vinyl.Core		
                  Reflex.Vinyl.Events
 
+                 -- TODO hoist these out into own package?
+                 Reflex.Attributes
+                 Reflex.Attributes.HTML
+                 Reflex.Attributes.CSS
+
                  Reflex.Vinyl.Example                
  other-modules:
 
