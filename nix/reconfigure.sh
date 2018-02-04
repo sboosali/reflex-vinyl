@@ -2,7 +2,8 @@
 set -e
 ########################################
 
-cabal2nix . > ./default.nix
+cabal2nix .         > "./nix/reflex-vinyl-default.nix"
+cabal2nix . --shell > "./nix/reflex-vinyl-shell.nix"
 
 ./provision.sh
 

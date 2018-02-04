@@ -1,7 +1,8 @@
 { mkDerivation, base, bytestring, containers, deepseq, doctest
-, hashable, hedgehog, lens, mtl, QuickCheck, reflex, reflex-dom
-, reflex-dom-core, spiros, stdenv, tasty, tasty-hedgehog
-, tasty-quickcheck, text, transformers, unordered-containers, vinyl
+, hashable, hedgehog, lens, lucid, mtl, QuickCheck, reflex
+, reflex-dom, reflex-dom-core, spiros, stdenv, tasty
+, tasty-hedgehog, tasty-quickcheck, text, transformers
+, unordered-containers, vinyl
 }:
 mkDerivation {
   pname = "reflex-vinyl";
@@ -10,7 +11,7 @@ mkDerivation {
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
-    base bytestring containers deepseq hashable lens mtl reflex
+    base bytestring containers deepseq hashable lens lucid mtl reflex
     reflex-dom reflex-dom-core spiros text transformers
     unordered-containers vinyl
   ];
