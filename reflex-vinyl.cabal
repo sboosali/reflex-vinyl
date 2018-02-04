@@ -120,10 +120,12 @@ library
                      ScopedTypeVariables StandaloneDeriving
 
  exposed-modules:
+
                  Reflex.Vinyl
                  Reflex.Vinyl.Types
                  Reflex.Vinyl.Core		
                  Reflex.Vinyl.Events
+
                  Reflex.Vinyl.Example                
  other-modules:
 
@@ -159,6 +161,8 @@ library
              , reflex
              , reflex-dom-core
              , reflex-dom
+
+             , lucid
 
 ----------------------------------------
 -- EXECUTABLES
