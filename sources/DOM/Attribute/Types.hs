@@ -17,22 +17,22 @@ import Data.Vinyl.TypeLevel (type (++)) --TODO
 the (type-level) enumeration of 'ATTRIBUTE'. 
 
 -}
-type AllHTMLAttributes --TODO
-   = GlobalHTMLAttributes
-  ++ LocalHTMLAttributes 
+type ALL_ATTRIBUTES --TODO
+   = GLOBAL_ATTRIBUTES
+  ++ LOCAL_ATTRIBUTES 
 
 ----------------------------------------
 
-type GlobalHTMLAttributes --TODO
-   = GlobalHTMLAttributes'
-  ++ ARIAAttributes
+type GLOBAL_ATTRIBUTES --TODO
+   = GLOBAL_ATTRIBUTES_
+  ++ ARIA_ATTRIBUTES
 
 ----------------------------------------
 
 {-| global html attributes, i.e. valid for all elements. 
 
 -}
-type GlobalHTMLAttributes' =
+type GLOBAL_ATTRIBUTES_ =
 
  -- Standard Attributes
   [ ACCESSKEY
@@ -88,7 +88,7 @@ type GlobalHTMLAttributes' =
 {-| html attributes for accessibility. 
 
 -}
-type ARIAAttributes =
+type ARIA_ATTRIBUTES =
   [ ARIA_ACTIVEDESCENDANT
   , ARIA_ATOMIC
   , ARIA_AUTOCOMPLETE
@@ -143,7 +143,7 @@ type ARIAAttributes =
 {-| the rest of the html attributes (i.e. non-global).
 
 -}
-type LocalHTMLAttributes = 
+type LOCAL_ATTRIBUTES = 
   [ ACCEPT
   , ACCEPTCHARSET
   , ACTION
@@ -256,7 +256,15 @@ type LocalHTMLAttributes =
 
 ----------------------------------------
 
-type AnchorAttributes = GlobalHTMLAttributes ++
+{-| All @<anchor>@ attributes.
+
+-}
+type ANCHOR_ATTRIBUTES = ANCHOR_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<anchor>@-specific attributes.
+
+-}
+type ANCHOR_ATTRIBUTES_ =
   '[ DOWNLOAD
    , HREF
    , HREFLANG
@@ -269,12 +277,30 @@ type AnchorAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type AudioAttributes = MediaAttributes ++
-  '[] -- NOTE the <audio> element only takes the <media> attributes
+{- |
+
+@<audio>@ subtypes @<media>@.  
+
+-}
+type AUDIO_ATTRIBUTES = AUDIO_ATTRIBUTES_ ++ MEDIA_ATTRIBUTES
+
+{-| @<audio>@-specific attributes (NOTE there are none).
+
+-}
+type AUDIO_ATTRIBUTES_ = ('[] :: [ATTRIBUTE])
+  -- the <audio> element only takes the <media> attributes
 
 ----------------------------------------
 
-type AreaAttributes = GlobalHTMLAttributes ++
+{-| All @<area>@ attributes.
+
+-}
+type AREA_ATTRIBUTES = AREA_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<area>@-specific attributes.
+
+-}
+type AREA_ATTRIBUTES_ =
   '[ ALT
    , COORDS
    , DOWNLOAD
@@ -288,20 +314,44 @@ type AreaAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type BaseAttributes = GlobalHTMLAttributes ++
+{-| All @<base>@ attributes.
+
+-}
+type BASE_ATTRIBUTES = BASE_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<base>@-specific attributes.
+
+-}
+type BASE_ATTRIBUTES_ =
   '[ HREF
    , TARGET
    ]
 
 ----------------------------------------
 
-type BlockquoteAttributes = GlobalHTMLAttributes ++
+{-| All @<blockquote>@ attributes.
+
+-}
+type BLOCKQUOTE_ATTRIBUTES = BLOCKQUOTE_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<blockquote>@-specific attributes.
+
+-}
+type BLOCKQUOTE_ATTRIBUTES_ =
   '[ CITE
    ]
 
 ----------------------------------------
 
-type ButtonAttributes = GlobalHTMLAttributes ++
+{-| All @<button>@ attributes.
+
+-}
+type BUTTON_ATTRIBUTES = BUTTON_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<button>@-specific attributes.
+
+-}
+type BUTTON_ATTRIBUTES_ =
   '[ AUTOFOCUS
    , DISABLED
    , FORM
@@ -317,40 +367,88 @@ type ButtonAttributes = GlobalHTMLAttributes ++
 
 ---------------------------------------
 
-type CanvasAttributes = GlobalHTMLAttributes ++
+{-| All @<canvas>@ attributes.
+
+-}
+type CANVAS_ATTRIBUTES = CANVAS_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<canvas>@-specific attributes.
+
+-}
+type CANVAS_ATTRIBUTES_ =
   '[ HEIGHT
    , WIDTH
    ]
 
 ---------------------------------------
 
-type ColAttributes = GlobalHTMLAttributes ++
+{-| All @<col>@ attributes.
+
+-}
+type COL_ATTRIBUTES = COL_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<col>@-specific attributes.
+
+-}
+type COL_ATTRIBUTES_ =
   '[ SPAN
    , WIDTH
    ]
 
 ----------------------------------------
 
-type ColgroupAttributes = GlobalHTMLAttributes ++
+{-| All @<colgroup>@ attributes.
+
+-}
+type COLGROUP_ATTRIBUTES = COLGROUP_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<colgroup>@-specific attributes.
+
+-}
+type COLGROUP_ATTRIBUTES_ =
   '[ SPAN
    ]
 
 ----------------------------------------
 
-type DetailsAttributes = GlobalHTMLAttributes ++
+{-| All @<details>@ attributes.
+
+-}
+type DETAILS_ATTRIBUTES = DETAILS_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<details>@-specific attributes.
+
+-}
+type DETAILS_ATTRIBUTES_ =
   '[ OPEN
    ]
 
 ----------------------------------------
 
-type DelAttributes = GlobalHTMLAttributes ++
+{-| All @<del>@ attributes.
+
+-}
+type DEL_ATTRIBUTES = DEL_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<del>@-specific attributes.
+
+-}
+type DEL_ATTRIBUTES_ =
   '[ CITE
    , DATETIME
    ]
 
 ----------------------------------------
 
-type EmbedAttributes = GlobalHTMLAttributes ++
+{-| All @<embed>@ attributes.
+
+-}
+type EMBED_ATTRIBUTES = EMBED_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<embed>@-specific attributes.
+
+-}
+type EMBED_ATTRIBUTES_ =
   '[ HEIGHT
    , SRC
    , TYPE
@@ -359,7 +457,15 @@ type EmbedAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type FieldsetAttributes = GlobalHTMLAttributes ++
+{-| All @<fieldset>@ attributes.
+
+-}
+type FIELDSET_ATTRIBUTES = FIELDSET_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<fieldset>@-specific attributes.
+
+-}
+type FIELDSET_ATTRIBUTES_ =
   '[ DISABLED
    , FORM
    , NAME
@@ -367,7 +473,15 @@ type FieldsetAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type FormAttributes = GlobalHTMLAttributes ++
+{-| All @<form>@ attributes.
+
+-}
+type FORM_ATTRIBUTES = FORM_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<form>@-specific attributes.
+
+-}
+type FORM_ATTRIBUTES_ =
   '[ ACCEPTCHARSET
    , ACTION
    , AUTOCOMPLETE
@@ -380,13 +494,29 @@ type FormAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type HtmlAttributes = GlobalHTMLAttributes ++
+{-| All @<html>@ attributes.
+
+-}
+type HTML_ATTRIBUTES = HTML_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<html>@-specific attributes.
+
+-}
+type HTML_ATTRIBUTES_ =
   '[ MANIFEST
    ]
 
 ----------------------------------------
 
-type IframeAttributes = GlobalHTMLAttributes ++
+{-| All @<iframe>@ attributes.
+
+-}
+type IFRAME_ATTRIBUTES = IFRAME_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<iframe>@-specific attributes.
+
+-}
+type IFRAME_ATTRIBUTES_ =
   '[ ALLOWFULLSCREEN
    , ALLOWTRANSPARENCY
    , FRAMEBORDER
@@ -404,7 +534,15 @@ type IframeAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type ImgAttributes = GlobalHTMLAttributes ++
+{-| All @<img>@ attributes.
+
+-}
+type IMG_ATTRIBUTES = IMG_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<img>@-specific attributes.
+
+-}
+type IMG_ATTRIBUTES_ =
   '[ ALT
    , HEIGHT
    , SIZES
@@ -416,14 +554,30 @@ type ImgAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type InsAttributes = GlobalHTMLAttributes ++
+{-| All @<ins>@ attributes.
+
+-}
+type INS_ATTRIBUTES = INS_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<ins>@-specific attributes.
+
+-}
+type INS_ATTRIBUTES_ =
   '[ CITE
    , DATETIME
    ]
 
 ----------------------------------------
 
-type InputAttributes = GlobalHTMLAttributes ++
+{-| All @<input>@ attributes.
+
+-}
+type INPUT_ATTRIBUTES = INPUT_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<input>@-specific attributes.
+
+-}
+type INPUT_ATTRIBUTES_ =
   '[ ACCEPT
    , ALT
    , AUTOCOMPLETE
@@ -461,7 +615,15 @@ type InputAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type KeygenAttributes = GlobalHTMLAttributes ++
+{-| All @<keygen>@ attributes.
+
+-}
+type KEYGEN_ATTRIBUTES = KEYGEN_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<keygen>@-specific attributes.
+
+-}
+type KEYGEN_ATTRIBUTES_ =
   '[ AUTOFOCUS
    , CHALLENGE
    , DISABLED
@@ -473,20 +635,44 @@ type KeygenAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type LabelAttributes = GlobalHTMLAttributes ++
+{-| All @<label>@ attributes.
+
+-}
+type LABEL_ATTRIBUTES = LABEL_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<label>@-specific attributes.
+
+-}
+type LABEL_ATTRIBUTES_ =
   '[ FORM
    , HTMLFOR
    ]
 
 ----------------------------------------
 
-type LiAttributes = GlobalHTMLAttributes ++
+{-| All @<li>@ attributes.
+
+-}
+type LI_ATTRIBUTES = LI_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<li>@-specific attributes.
+
+-}
+type LI_ATTRIBUTES_ =
   '[ VALUE
    ]
 
 ----------------------------------------
 
-type LinkAttributes = GlobalHTMLAttributes ++
+{-| All @<link>@ attributes.
+
+-}
+type LINK_ATTRIBUTES = LINK_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<link>@-specific attributes.
+
+-}
+type LINK_ATTRIBUTES_ =
   '[ AS
    , CROSSORIGIN
    , HREF
@@ -500,19 +686,43 @@ type LinkAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type MapAttributes = GlobalHTMLAttributes ++
+{-| All @<map>@ attributes.
+
+-}
+type MAP_ATTRIBUTES = MAP_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<map>@-specific attributes.
+
+-}
+type MAP_ATTRIBUTES_ =
   '[ NAME
    ]
 
 ----------------------------------------
 
-type MenuAttributes = GlobalHTMLAttributes ++
+{-| All @<menu>@ attributes.
+
+-}
+type MENU_ATTRIBUTES = MENU_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<menu>@-specific attributes.
+
+-}
+type MENU_ATTRIBUTES_ =
   '[ TYPE
    ]
 
 ----------------------------------------
 
-type MediaAttributes = GlobalHTMLAttributes ++
+{-| All @<media>@ attributes.
+
+-}
+type MEDIA_ATTRIBUTES = MEDIA_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<media>@-specific attributes.
+
+-}
+type MEDIA_ATTRIBUTES_ =
   '[ AUTOPLAY
    , CONTROLS
    , CONTROLSLIST
@@ -527,7 +737,15 @@ type MediaAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type MetaAttributes = GlobalHTMLAttributes ++
+{-| All @<meta>@ attributes.
+
+-}
+type META_ATTRIBUTES = META_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<meta>@-specific attributes.
+
+-}
+type META_ATTRIBUTES_ =
   '[ CHARSET
    , CONTENT
    , HTTPEQUIV
@@ -536,7 +754,15 @@ type MetaAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type MeterAttributes = GlobalHTMLAttributes ++
+{-| All @<meter>@ attributes.
+
+-}
+type METER_ATTRIBUTES = METER_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<meter>@-specific attributes.
+
+-}
+type METER_ATTRIBUTES_ =
   '[ FORM
    , HIGH
    , LOW
@@ -548,13 +774,29 @@ type MeterAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type QuoteAttributes = GlobalHTMLAttributes ++
+{-| All @<quote>@ attributes.
+
+-}
+type QUOTE_ATTRIBUTES = QUOTE_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<quote>@-specific attributes.
+
+-}
+type QUOTE_ATTRIBUTES_ =
   '[ CITE
    ]
 
 ----------------------------------------
 
-type ObjectAttributes = GlobalHTMLAttributes ++
+{-| All @<object>@ attributes.
+
+-}
+type OBJECT_ATTRIBUTES = OBJECT_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<object>@-specific attributes.
+
+-}
+type OBJECT_ATTRIBUTES_ =
   '[ CLASSID
    , DATA
    , FORM
@@ -568,21 +810,45 @@ type ObjectAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type OlAttributes = GlobalHTMLAttributes ++
+{-| All @<ol>@ attributes.
+
+-}
+type OL_ATTRIBUTES = OL_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<ol>@-specific attributes.
+
+-}
+type OL_ATTRIBUTES_ =
   '[ REVERSED
    , START
    ]
 
 ----------------------------------------
 
-type OptgroupAttributes = GlobalHTMLAttributes ++
+{-| All @<optgroup>@ attributes.
+
+-}
+type OPTGROUP_ATTRIBUTES = OPTGROUP_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<optgroup>@-specific attributes.
+
+-}
+type OPTGROUP_ATTRIBUTES_ =
   '[ DISABLED
    , LABEL
    ]
 
 ----------------------------------------
 
-type OptionAttributes = GlobalHTMLAttributes ++
+{-| All @<option>@ attributes.
+
+-}
+type OPTION_ATTRIBUTES = OPTION_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<option>@-specific attributes.
+
+-}
+type OPTION_ATTRIBUTES_ =
   '[ DISABLED
    , LABEL
    , SELECTED
@@ -591,7 +857,15 @@ type OptionAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type OutputAttributes = GlobalHTMLAttributes ++
+{-| All @<output>@ attributes.
+
+-}
+type OUTPUT_ATTRIBUTES = OUTPUT_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<output>@-specific attributes.
+
+-}
+type OUTPUT_ATTRIBUTES_ =
   '[ FORM
    , HTMLFOR
    , NAME
@@ -599,21 +873,45 @@ type OutputAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type ParamAttributes = GlobalHTMLAttributes ++
+{-| All @<param>@ attributes.
+
+-}
+type PARAM_ATTRIBUTES = PARAM_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<param>@-specific attributes.
+
+-}
+type PARAM_ATTRIBUTES_ =
   '[ NAME
    , VALUE
    ]
 
 ----------------------------------------
 
-type ProgressAttributes = GlobalHTMLAttributes ++
+{-| All @<progress>@ attributes.
+
+-}
+type PROGRESS_ATTRIBUTES = PROGRESS_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<progress>@-specific attributes.
+
+-}
+type PROGRESS_ATTRIBUTES_ =
   '[ MAX
    , VALUE
    ]
 
 ----------------------------------------
 
-type ScriptAttributes = GlobalHTMLAttributes ++
+{-| All @<script>@ attributes.
+
+-}
+type SCRIPT_ATTRIBUTES = SCRIPT_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<script>@-specific attributes.
+
+-}
+type SCRIPT_ATTRIBUTES_ =
   '[ ASYNC
    , CHARSET
    , CROSSORIGIN
@@ -626,7 +924,15 @@ type ScriptAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type SelectAttributes = GlobalHTMLAttributes ++
+{-| All @<select>@ attributes.
+
+-}
+type SELECT_ATTRIBUTES = SELECT_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<select>@-specific attributes.
+
+-}
+type SELECT_ATTRIBUTES_ =
   '[ AUTOFOCUS
    , DISABLED
    , FORM
@@ -639,7 +945,15 @@ type SelectAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type SourceAttributes = GlobalHTMLAttributes ++
+{-| All @<source>@ attributes.
+
+-}
+type SOURCE_ATTRIBUTES = SOURCE_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<source>@-specific attributes.
+
+-}
+type SOURCE_ATTRIBUTES_ =
   '[ MEDIA
    , SIZES
    , SRC
@@ -649,7 +963,15 @@ type SourceAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type StyleAttributes = GlobalHTMLAttributes ++
+{-| All @<style>@ attributes.
+
+-}
+type STYLE_ATTRIBUTES = STYLE_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<style>@-specific attributes.
+
+-}
+type STYLE_ATTRIBUTES_ =
   '[ MEDIA
    , NONCE
    , SCOPED
@@ -658,7 +980,15 @@ type StyleAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type TableAttributes = GlobalHTMLAttributes ++
+{-| All @<table>@ attributes.
+
+-}
+type TABLE_ATTRIBUTES = TABLE_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<table>@-specific attributes.
+
+-}
+type TABLE_ATTRIBUTES_ =
   '[ CELLPADDING
    , CELLSPACING
    , SUMMARY
@@ -666,7 +996,15 @@ type TableAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type TextareaAttributes = GlobalHTMLAttributes ++
+{-| All @<textarea>@ attributes.
+
+-}
+type TEXTAREA_ATTRIBUTES = TEXTAREA_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<textarea>@-specific attributes.
+
+-}
+type TEXTAREA_ATTRIBUTES_ =
   '[ AUTOCOMPLETE
    , AUTOFOCUS
    , COLS
@@ -686,7 +1024,15 @@ type TextareaAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type TdAttributes = GlobalHTMLAttributes ++
+{-| All @<td>@ attributes.
+
+-}
+type TD_ATTRIBUTES = TD_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<td>@-specific attributes.
+
+-}
+type TD_ATTRIBUTES_ =
   '[ COLSPAN
    , HEADERS
    , ROWSPAN
@@ -695,7 +1041,15 @@ type TdAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type ThAttributes = GlobalHTMLAttributes ++
+{-| All @<th>@ attributes.
+
+-}
+type TH_ATTRIBUTES = TH_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<th>@-specific attributes.
+
+-}
+type TH_ATTRIBUTES_ =
   '[ COLSPAN
    , HEADERS
    , ROWSPAN
@@ -704,13 +1058,29 @@ type ThAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type TimeAttributes = GlobalHTMLAttributes ++
+{-| All @<time>@ attributes.
+
+-}
+type TIME_ATTRIBUTES = TIME_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<time>@-specific attributes.
+
+-}
+type TIME_ATTRIBUTES_ =
   '[ DATETIME
    ]
 
 ----------------------------------------
 
-type TrackAttributes = GlobalHTMLAttributes ++
+{-| All @<track>@ attributes.
+
+-}
+type TRACK_ATTRIBUTES = TRACK_ATTRIBUTES_ ++ GLOBAL_ATTRIBUTES
+
+{-| @<track>@-specific attributes.
+
+-}
+type TRACK_ATTRIBUTES_ =
   '[ DEFAULT
    , KIND
    , LABEL
@@ -720,7 +1090,17 @@ type TrackAttributes = GlobalHTMLAttributes ++
 
 ----------------------------------------
 
-type VideoAttributes = MediaAttributes ++ 
+{-| All @<video>@ attributes.
+
+@<video>@ subtypes @<media>@.
+
+-}
+type VIDEO_ATTRIBUTES = VIDEO_ATTRIBUTES_ ++ MEDIA_ATTRIBUTES 
+
+{-| @<video>@-specific attributes.
+
+-}
+type VIDEO_ATTRIBUTES_ =
   '[ HEIGHT
    , PLAYSINLINE
    , POSTER

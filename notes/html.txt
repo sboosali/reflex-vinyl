@@ -1,5 +1,181 @@
 
-data Attribute (a :: *) (attribute :: ATTRIBUTE) where
+
+  Anchor
+  Audio
+  Area
+  Base
+  Blockquote
+  Button
+  Canvas
+  Col
+  Colgroup
+  Details
+  Del
+  Embed
+  Fieldset
+  Form
+  Html
+  Iframe
+  Img
+  Ins
+  Input
+  Keygen
+  Label
+  Li
+  Link
+  Map
+  Menu
+  Media
+  Meta
+  Meter
+  Quote
+  Object
+  Ol
+  Optgroup
+  Option
+  Output
+  Param
+  Progress
+  Script
+  Select
+  Source
+  Style
+  Table
+  Textarea
+  Td
+  Th
+  Time
+  Track
+  Video
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ANCHOR = AnchorAttributes
+
+  AUDIO = AudioAttributes
+
+  AREA = AreaAttributes
+
+  BASE = BaseAttributes
+
+  BLOCKQUOTE = BlockquoteAttributes
+
+  BUTTON = ButtonAttributes
+
+  CANVAS = CanvasAttributes
+
+  COL = ColAttributes
+
+  COLGROUP = ColgroupAttributes
+
+  DETAILS = DetailsAttributes
+
+  DEL = DelAttributes
+
+  EMBED = EmbedAttributes
+
+  FIELDSET = FieldsetAttributes
+
+  FORM = FormAttributes
+
+  HTML = HtmlAttributes
+
+  IFRAME = IframeAttributes
+
+  IMG = ImgAttributes
+
+  INS = InsAttributes
+
+  INPUT = InputAttributes
+
+  KEYGEN = KeygenAttributes
+
+  LABEL = LabelAttributes
+
+  LI = LiAttributes
+
+  LINK = LinkAttributes
+
+  MAP = MapAttributes
+
+  MENU = MenuAttributes
+
+  MEDIA = MediaAttributes
+
+  META = MetaAttributes
+
+  METER = MeterAttributes
+
+  QUOTE = QuoteAttributes
+
+  OBJECT = ObjectAttributes
+
+  OL = OlAttributes
+
+  OPTGROUP = OptgroupAttributes
+
+  OPTION = OptionAttributes
+
+  OUTPUT = OutputAttributes
+
+  PARAM = ParamAttributes
+
+  PROGRESS = ProgressAttributes
+
+  SCRIPT = ScriptAttributes
+
+  SELECT = SelectAttributes
+
+  SOURCE = SourceAttributes
+
+  STYLE = StyleAttributes
+
+  TABLE = TableAttributes
+
+  TEXTAREA = TextareaAttributes
+
+  TD = TdAttributes
+
+  TH = ThAttributes
+
+  TIME = TimeAttributes
+
+  TRACK = TrackAttributes
+
+  VIDEO = VideoAttributes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   AccessKey                :: Attribute (Text)          'ACCESSKEY
   ClassName                :: Attribute (Text)          'CLASSNAME
   ContentEditable          :: Attribute (Bool)          'CONTENTEDITABLE
@@ -196,6 +372,207 @@ data Attribute (a :: *) (attribute :: ATTRIBUTE) where
 
 
 
+
+
+
+
+
+
+
+
+
+data Attribute (a :: *) (attribute :: ATTRIBUTE) where
+  AccessKey                :: Attribute (Text)          'ACCESSKEY
+  ClassName                :: Attribute (Text)          'CLASSNAME
+  ContentEditable          :: Attribute (Bool)          'CONTENTEDITABLE
+  ContextMenu              :: Attribute (Text)          'CONTEXTMENU
+  Dir                      :: Attribute (Text)          'DIR
+  Draggable                :: Attribute (Bool)          'DRAGGABLE
+  Hidden                   :: Attribute (Bool)          'HIDDEN
+  Id                       :: Attribute (Text)          'ID
+  Lang                     :: Attribute (Text)          'LANG
+  Slot                     :: Attribute (Text)          'SLOT
+  SpellCheck               :: Attribute (Bool)          'SPELLCHECK
+  Style                    :: Attribute (CSSProperties) 'STYLE
+  TabIndex                 :: Attribute (Number)        'TABINDEX
+  Title                    :: Attribute (Text)          'TITLE
+  InputMode                :: Attribute (Text)          'INPUTMODE
+  Is                       :: Attribute (Text)          'IS
+  RadioGroup               :: Attribute (Text)          'RADIOGROUP
+  Role                     :: Attribute (Text)          'ROLE
+  About                    :: Attribute (Text)          'ABOUT
+  Datatype                 :: Attribute (Text)          'DATATYPE
+  Inlist                   :: Attribute (Any)           'INLIST
+  Prefix                   :: Attribute (Text)          'PREFIX
+  Property                 :: Attribute (Text)          'PROPERTY
+  Resource                 :: Attribute (Text)          'RESOURCE
+  Typeof                   :: Attribute (Text)          'TYPEOF
+  Vocab                    :: Attribute (Text)          'VOCAB
+  AutoCapitalize           :: Attribute (Text)          'AUTOCAPITALIZE
+  AutoCorrect              :: Attribute (Text)          'AUTOCORRECT
+  AutoSave                 :: Attribute (Text)          'AUTOSAVE
+  Color                    :: Attribute (Text)          'COLOR
+  ItemProp                 :: Attribute (Text)          'ITEMPROP
+  ItemScope                :: Attribute (Bool)          'ITEMSCOPE
+  ItemType                 :: Attribute (Text)          'ITEMTYPE
+  ItemID                   :: Attribute (Text)          'ITEMID
+  ItemRef                  :: Attribute (Text)          'ITEMREF
+  Results                  :: Attribute (Number)        'RESULTS
+  Security                 :: Attribute (Text)          'SECURITY
+  Unselectable             :: Attribute (Bool)          'UNSELECTABLE
+  AriaActivedescendant    :: Attribute (Text) 'ARIA_ACTIVEDESCENDANT
+  AriaAtomic              :: Attribute (Bool) 'ARIA_ATOMIC
+  AriaAutocomplete        :: Attribute (Enumeration ["none","inline","list","both"]) 'ARIA_AUTOCOMPLETE
+  AriaBusy                :: Attribute (Bool) 'ARIA_BUSY
+  AriaChecked             :: Attribute (Bool) 'ARIA_CHECKED
+  AriaColcount            :: Attribute (Number) 'ARIA_COLCOUNT
+  AriaColindex            :: Attribute (Number) 'ARIA_COLINDEX
+  AriaColspan             :: Attribute (Number) 'ARIA_COLSPAN
+  AriaCurrent         :: Attribute (Either Bool (Enumeration ["page", "step", "location", "date", "time"])) 'ARIA_CURRENT
+  AriaDescribedby     :: Attribute (Text) 'ARIA_DESCRIBEDBY
+  AriaDetails         :: Attribute (Text) 'ARIA_DETAILS
+  AriaDisabled        :: Attribute (Bool) 'ARIA_DISABLED
+  AriaDropeffect      :: Attribute (Enumeration [ "none", "copy", "execute", "link", "move", "popup"]) 'ARIA_DROPEFFECT
+  AriaErrormessage    :: Attribute (Text) 'ARIA_ERRORMESSAGE
+  AriaExpanded        :: Attribute (Bool) 'ARIA_EXPANDED
+  AriaFlowto          :: Attribute (Text) 'ARIA_FLOWTO
+  AriaGrabbed         :: Attribute (Bool) 'ARIA_GRABBED
+  AriaHaspopup        :: Attribute (Either Bool (Enumeration ["menu", "listbox", "tree", "grid", "dialog"])) 'ARIA_HASPOPUP
+  AriaHidden          :: Attribute (Bool) 'ARIA_HIDDEN
+  AriaInvalid         :: Attribute (Either Bool (Enumeration ["grammar", "spelling"])) 'ARIA_INVALID
+  AriaKeyshortcuts    :: Attribute (Text) 'ARIA_KEYSHORTCUTS
+  AriaLabel           :: Attribute (Text) 'ARIA_LABEL
+  AriaLabelledby      :: Attribute (Text) 'ARIA_LABELLEDBY
+  AriaLevel           :: Attribute (Number) 'ARIA_LEVEL
+  AriaLive            :: Attribute (Enumeration ["off", "assertive", "polite"]) 'ARIA_LIVE
+  AriaModal           :: Attribute (Bool) 'ARIA_MODAL
+  AriaMultiline       :: Attribute (Bool) 'ARIA_MULTILINE
+  AriaMultiselectable :: Attribute (Bool) 'ARIA_MULTISELECTABLE
+  AriaOrientation     :: Attribute (Enumeration ["horizontal", "vertical"]) 'ARIA_ORIENTATION
+  AriaOwns            :: Attribute (Text) 'ARIA_OWNS
+  AriaPlaceholder     :: Attribute (Text) 'ARIA_PLACEHOLDER
+  AriaPosinset        :: Attribute (Number) 'ARIA_POSINSET
+  AriaPressed         :: Attribute (Either Bool (Enumeration '["mixed"])) 'ARIA_PRESSED
+  AriaReadonly        :: Attribute (Bool) 'ARIA_READONLY
+  AriaRelevant        :: Attribute (Enumeration ["additions", "additions text", "all", "removals", "text"]) 'ARIA_RELEVANT
+  AriaRequired        :: Attribute (Bool) 'ARIA_REQUIRED
+  AriaRoledescription :: Attribute (Text) 'ARIA_ROLEDESCRIPTION
+  AriaRowcount        :: Attribute (Number) 'ARIA_ROWCOUNT
+  AriaRowindex        :: Attribute (Number) 'ARIA_ROWINDEX
+  AriaRowspan         :: Attribute (Number) 'ARIA_ROWSPAN
+  AriaSelected        :: Attribute (Bool) 'ARIA_SELECTED
+  AriaSetsize         :: Attribute (Number) 'ARIA_SETSIZE
+  AriaSort            :: Attribute (Enumeration ["none", "ascending", "descending", "other"]) 'ARIA_SORT
+  AriaValuemax        :: Attribute (Number) 'ARIA_VALUEMAX
+  AriaValuemin        :: Attribute (Number) 'ARIA_VALUEMIN
+  AriaValuenow        :: Attribute (Number) 'ARIA_VALUENOW
+  AriaValuetext       :: Attribute (Text) 'ARIA_VALUETEXT
+  Accept                  :: Attribute (Text)        'ACCEPT
+  AcceptCharset           :: Attribute (Text)        'ACCEPTCHARSET
+  Action                  :: Attribute (Text)        'ACTION
+  AllowFullScreen         :: Attribute (Bool)        'ALLOWFULLSCREEN
+  AllowTransparency       :: Attribute (Bool)        'ALLOWTRANSPARENCY
+  Alt                     :: Attribute (Text)        'ALT
+  As                      :: Attribute (Text)        'AS
+  Async                   :: Attribute (Bool)        'ASYNC
+  AutoComplete            :: Attribute (Text)        'AUTOCOMPLETE
+  AutoFocus               :: Attribute (Bool)        'AUTOFOCUS
+  AutoPlay                :: Attribute (Bool)        'AUTOPLAY
+  Capture                 :: Attribute (Bool)        'CAPTURE
+  CellPadding             :: Attribute (LooseNumber) 'CELLPADDING
+  CellSpacing             :: Attribute (LooseNumber) 'CELLSPACING
+  CharSet                 :: Attribute (Text)        'CHARSET
+  Challenge               :: Attribute (Text)        'CHALLENGE
+  Checked                 :: Attribute (Bool)        'CHECKED
+  Cite                    :: Attribute (Text)        'CITE
+  ClassID                 :: Attribute (Text)        'CLASSID
+  Cols                    :: Attribute (Number)      'COLS
+  ColSpan                 :: Attribute (Number)      'COLSPAN
+  Content                 :: Attribute (Text)        'CONTENT
+  Controls                :: Attribute (Bool)        'CONTROLS
+  Coords                  :: Attribute (Text)        'COORDS
+  CrossOrigin             :: Attribute (Text)        'CROSSORIGIN
+  Data                    :: Attribute (Text)        'DATA
+  DateTime                :: Attribute (Text)        'DATETIME
+  Default                 :: Attribute (Bool)        'DEFAULT
+  Defer                   :: Attribute (Bool)        'DEFER
+  Disabled                :: Attribute (Bool)        'DISABLED
+  Download                :: Attribute (Any)         'DOWNLOAD
+  EncType                 :: Attribute (Text)        'ENCTYPE
+  Form                    :: Attribute (Text)        'FORM
+  FormAction              :: Attribute (Text)        'FORMACTION
+  FormEncType             :: Attribute (Text)        'FORMENCTYPE
+  FormMethod              :: Attribute (Text)        'FORMMETHOD
+  FormNoValidate          :: Attribute (Bool)        'FORMNOVALIDATE
+  FormTarget              :: Attribute (Text)        'FORMTARGET
+  FrameBorder             :: Attribute (LooseNumber) 'FRAMEBORDER
+  Headers                 :: Attribute (Text)        'HEADERS
+  Height                  :: Attribute (LooseNumber) 'HEIGHT
+  High                    :: Attribute (Number)      'HIGH
+  Href                    :: Attribute (Text)        'HREF
+  HrefLang                :: Attribute (Text)        'HREFLANG
+  HtmlFor                 :: Attribute (Text)        'HTMLFOR
+  HttpEquiv               :: Attribute (Text)        'HTTPEQUIV
+  Integrity               :: Attribute (Text)        'INTEGRITY
+  KeyParams               :: Attribute (Text)        'KEYPARAMS
+  KeyType                 :: Attribute (Text)        'KEYTYPE
+  Kind                    :: Attribute (Text)        'KIND
+  Label                   :: Attribute (Text)        'LABEL
+  List                    :: Attribute (Text)        'LIST
+  Loop                    :: Attribute (Bool)        'LOOP
+  Low                     :: Attribute (Number)      'LOW
+  Manifest                :: Attribute (Text)        'MANIFEST
+  MarginHeight            :: Attribute (Number)      'MARGINHEIGHT
+  MarginWidth             :: Attribute (Number)      'MARGINWIDTH
+  Max                     :: Attribute (LooseNumber) 'MAX
+  MaxLength               :: Attribute (Number)      'MAXLENGTH
+  Media                   :: Attribute (Text)        'MEDIA
+  MediaGroup              :: Attribute (Text)        'MEDIAGROUP
+  Method                  :: Attribute (Text)        'METHOD
+  Min                     :: Attribute (LooseNumber) 'MIN
+  MinLength               :: Attribute (Number)      'MINLENGTH
+  Multiple                :: Attribute (Bool)        'MULTIPLE
+  Muted                   :: Attribute (Bool)        'MUTED
+  Name                    :: Attribute (Text)        'NAME
+  Nonce                   :: Attribute (Text)        'NONCE
+  NoValidate              :: Attribute (Bool)        'NOVALIDATE
+  Open                    :: Attribute (Bool)        'OPEN
+  Optimum                 :: Attribute (Number)      'OPTIMUM
+  Pattern                 :: Attribute (Text)        'PATTERN
+  Placeholder             :: Attribute (Text)        'PLACEHOLDER
+  PlaysInline             :: Attribute (Bool)        'PLAYSINLINE
+  Poster                  :: Attribute (Text)        'POSTER
+  Preload                 :: Attribute (Text)        'PRELOAD
+  ReadOnly                :: Attribute (Bool)        'READONLY
+  Rel                     :: Attribute (Text)        'REL
+  Required                :: Attribute (Bool)        'REQUIRED
+  Reversed                :: Attribute (Bool)        'REVERSED
+  Rows                    :: Attribute (Number)      'ROWS
+  RowSpan                 :: Attribute (Number)      'ROWSPAN
+  Sandbox                 :: Attribute (Text)        'SANDBOX
+  Scope                   :: Attribute (Text)        'SCOPE
+  Scoped                  :: Attribute (Bool)        'SCOPED
+  Scrolling               :: Attribute (Text)        'SCROLLING
+  Seamless                :: Attribute (Bool)        'SEAMLESS
+  Selected                :: Attribute (Bool)        'SELECTED
+  Shape                   :: Attribute (Text)        'SHAPE
+  Size                    :: Attribute (Number)      'SIZE
+  Sizes                   :: Attribute (Text)        'SIZES
+  Span                    :: Attribute (Number)      'SPAN
+  Src                     :: Attribute (Text)        'SRC
+  SrcDoc                  :: Attribute (Text)        'SRCDOC
+  SrcLang                 :: Attribute (Text)        'SRCLANG
+  SrcSet                  :: Attribute (Text)        'SRCSET
+  Start                   :: Attribute (Number)      'START
+  Step                    :: Attribute (LooseNumber) 'STEP
+  Summary                 :: Attribute (Text)        'SUMMARY
+  Target                  :: Attribute (Text)        'TARGET
+  Type                    :: Attribute (Text)        'TYPE
+  UseMap                  :: Attribute (Text)        'USEMAP
+  Value                   :: Attribute (Text)        'VALUE 
+  Width                   :: Attribute (LooseNumber) 'WIDTH
+  Wmode                   :: Attribute (Text)        'WMODE
+  Wrap                    :: Attribute (Text)        'WRAP
 
 
 

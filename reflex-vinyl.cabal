@@ -121,6 +121,8 @@ library
 
  exposed-modules:
 
+                 Reflex.DOM.Typed 
+
                  Reflex.Vinyl
                  Reflex.Vinyl.Types
                  Reflex.Vinyl.Core		
@@ -137,21 +139,27 @@ library
                  DOM.Element
                  DOM.Element.Kind
                  DOM.Element.Singletons
-                 
+                 DOM.Element.Types 
+                 DOM.Element.Core                 
+
                  DOM.Attribute
                  DOM.Attribute.Kind
                  DOM.Attribute.Singletons
                  DOM.Attribute.Types
-                 DOM.Attribute.Record
                  DOM.Attribute.Core
+                 DOM.Attribute.Record
 
                  DOM.Event
                  DOM.Event.Kind
                  DOM.Event.Singletons
+                 DOM.Event.Types 
+                 DOM.Event.Core
                  
                  DOM.CSS
                  DOM.CSS.Kind
                  DOM.CSS.Singletons
+                 DOM.CSS.Types 
+                 DOM.CSS.Core
 
                  Reflex.Vinyl.Example                
  other-modules:

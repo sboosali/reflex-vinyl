@@ -9,7 +9,7 @@ module DOM.Attribute.Core where
 --import DOM.Extra
 --import DOM.Attribute.Kind
 --import DOM.Attribute.Singletons
-import DOM.Attribute.Types
+--import DOM.Attribute.Types
 import DOM.Attribute.Record
 
 import Prelude (undefined)
@@ -20,8 +20,9 @@ import Prelude (undefined)
 
 ----------------------------------------
 
+{-
 anchor'
-  :: AttributeValues AnchorAttributes
+  :: AnchorAttributes t
   -> ()
 
 anchor' = undefined
@@ -29,7 +30,7 @@ anchor' = undefined
 ----------------------------------------
 
 audio'
-  :: AttributeValues AudioAttributes
+  :: AudioAttributes t
   -> ()
 
 audio' = undefined
@@ -37,7 +38,7 @@ audio' = undefined
 ----------------------------------------
 
 area'
-  :: AttributeValues AreaAttributes
+  :: AreaAttributes t
   -> ()
 
 area' = undefined
@@ -45,7 +46,7 @@ area' = undefined
 ----------------------------------------
 
 base'
-  :: AttributeValues BaseAttributes
+  :: BaseAttributes t
   -> ()
 
 base' = undefined
@@ -53,7 +54,7 @@ base' = undefined
 ----------------------------------------
 
 blockquote'
-  :: AttributeValues BlockquoteAttributes
+  :: BlockquoteAttributes t
   -> ()
 
 blockquote' = undefined
@@ -61,7 +62,7 @@ blockquote' = undefined
 ----------------------------------------
 
 button'
-  :: AttributeValues ButtonAttributes
+  :: ButtonAttributes t
   -> ()
 
 button' = undefined
@@ -69,7 +70,7 @@ button' = undefined
 ----------------------------------------
 
 canvas'
-  :: AttributeValues CanvasAttributes
+  :: CanvasAttributes t
   -> ()
 
 canvas' = undefined
@@ -77,7 +78,7 @@ canvas' = undefined
 ----------------------------------------
 
 col'
-  :: AttributeValues ColAttributes
+  :: ColAttributes t
   -> ()
 
 col' = undefined
@@ -85,7 +86,7 @@ col' = undefined
 ----------------------------------------
 
 colgroup'
-  :: AttributeValues ColgroupAttributes
+  :: ColgroupAttributes t
   -> ()
 
 colgroup' = undefined
@@ -93,7 +94,7 @@ colgroup' = undefined
 ----------------------------------------
 
 details'
-  :: AttributeValues DetailsAttributes
+  :: DetailsAttributes t
   -> ()
 
 details' = undefined
@@ -101,7 +102,7 @@ details' = undefined
 ----------------------------------------
 
 del'
-  :: AttributeValues DelAttributes
+  :: DelAttributes t
   -> ()
 
 del' = undefined
@@ -109,7 +110,7 @@ del' = undefined
 ----------------------------------------
 
 embed'
-  :: AttributeValues EmbedAttributes
+  :: EmbedAttributes t
   -> ()
 
 embed' = undefined
@@ -117,7 +118,7 @@ embed' = undefined
 ----------------------------------------
 
 fieldset'
-  :: AttributeValues FieldsetAttributes
+  :: FieldsetAttributes t
   -> ()
 
 fieldset' = undefined
@@ -125,7 +126,7 @@ fieldset' = undefined
 ----------------------------------------
 
 form'
-  :: AttributeValues FormAttributes
+  :: FormAttributes t
   -> ()
 
 form' = undefined
@@ -133,7 +134,7 @@ form' = undefined
 ----------------------------------------
 
 html'
-  :: AttributeValues HtmlAttributes
+  :: HtmlAttributes t
   -> ()
 
 html' = undefined
@@ -141,7 +142,7 @@ html' = undefined
 ----------------------------------------
 
 iframe'
-  :: AttributeValues IframeAttributes
+  :: IframeAttributes t
   -> ()
 
 iframe' = undefined
@@ -149,7 +150,7 @@ iframe' = undefined
 ----------------------------------------
 
 img'
-  :: AttributeValues ImgAttributes
+  :: ImgAttributes t
   -> ()
 
 img' = undefined
@@ -157,7 +158,7 @@ img' = undefined
 ----------------------------------------
 
 ins'
-  :: AttributeValues InsAttributes
+  :: InsAttributes t
   -> ()
 
 ins' = undefined
@@ -165,7 +166,7 @@ ins' = undefined
 ----------------------------------------
 
 input'
-  :: AttributeValues InputAttributes
+  :: InputAttributes t
   -> ()
 
 input' = undefined
@@ -173,7 +174,7 @@ input' = undefined
 ----------------------------------------
 
 keygen'
-  :: AttributeValues KeygenAttributes
+  :: KeygenAttributes t
   -> ()
 
 keygen' = undefined
@@ -181,7 +182,7 @@ keygen' = undefined
 ----------------------------------------
 
 label'
-  :: AttributeValues LabelAttributes
+  :: LabelAttributes t
   -> ()
 
 label' = undefined
@@ -189,7 +190,7 @@ label' = undefined
 ----------------------------------------
 
 li'
-  :: AttributeValues LiAttributes
+  :: LiAttributes t
   -> ()
 
 li' = undefined
@@ -197,7 +198,7 @@ li' = undefined
 ----------------------------------------
 
 link'
-  :: AttributeValues LinkAttributes
+  :: LinkAttributes t
   -> ()
 
 link' = undefined
@@ -205,7 +206,7 @@ link' = undefined
 ----------------------------------------
 
 map'
-  :: AttributeValues MapAttributes
+  :: MapAttributes t
   -> ()
 
 map' = undefined
@@ -213,7 +214,7 @@ map' = undefined
 ----------------------------------------
 
 menu'
-  :: AttributeValues MenuAttributes
+  :: MenuAttributes t
   -> ()
 
 menu' = undefined
@@ -221,7 +222,7 @@ menu' = undefined
 ----------------------------------------
 
 media'
-  :: AttributeValues MediaAttributes
+  :: MediaAttributes t
   -> ()
 
 media' = undefined
@@ -229,7 +230,7 @@ media' = undefined
 ----------------------------------------
 
 meta'
-  :: AttributeValues MetaAttributes
+  :: MetaAttributes t
   -> ()
 
 meta' = undefined
@@ -237,7 +238,7 @@ meta' = undefined
 ----------------------------------------
 
 meter'
-  :: AttributeValues MeterAttributes
+  :: MeterAttributes t
   -> ()
 
 meter' = undefined
@@ -245,7 +246,7 @@ meter' = undefined
 ----------------------------------------
 
 quote'
-  :: AttributeValues QuoteAttributes
+  :: QuoteAttributes t
   -> ()
 
 quote' = undefined
@@ -253,7 +254,7 @@ quote' = undefined
 ----------------------------------------
 
 object'
-  :: AttributeValues ObjectAttributes
+  :: ObjectAttributes t
   -> ()
 
 object' = undefined
@@ -261,7 +262,7 @@ object' = undefined
 ----------------------------------------
 
 ol'
-  :: AttributeValues OlAttributes
+  :: OlAttributes t
   -> ()
 
 ol' = undefined
@@ -269,7 +270,7 @@ ol' = undefined
 ----------------------------------------
 
 optgroup'
-  :: AttributeValues OptgroupAttributes
+  :: OptgroupAttributes t
   -> ()
 
 optgroup' = undefined
@@ -277,7 +278,7 @@ optgroup' = undefined
 ----------------------------------------
 
 option'
-  :: AttributeValues OptionAttributes
+  :: OptionAttributes t
   -> ()
 
 option' = undefined
@@ -285,7 +286,7 @@ option' = undefined
 ----------------------------------------
 
 output'
-  :: AttributeValues OutputAttributes
+  :: OutputAttributes t
   -> ()
 
 output' = undefined
@@ -293,7 +294,7 @@ output' = undefined
 ----------------------------------------
 
 param'
-  :: AttributeValues ParamAttributes
+  :: ParamAttributes t
   -> ()
 
 param' = undefined
@@ -301,7 +302,7 @@ param' = undefined
 ----------------------------------------
 
 progress'
-  :: AttributeValues ProgressAttributes
+  :: ProgressAttributes t
   -> ()
 
 progress' = undefined
@@ -309,7 +310,7 @@ progress' = undefined
 ----------------------------------------
 
 script'
-  :: AttributeValues ScriptAttributes
+  :: ScriptAttributes t
   -> ()
 
 script' = undefined
@@ -317,7 +318,7 @@ script' = undefined
 ----------------------------------------
 
 select'
-  :: AttributeValues SelectAttributes
+  :: SelectAttributes t
   -> ()
 
 select' = undefined
@@ -325,7 +326,7 @@ select' = undefined
 ----------------------------------------
 
 source'
-  :: AttributeValues SourceAttributes
+  :: SourceAttributes t
   -> ()
 
 source' = undefined
@@ -333,7 +334,7 @@ source' = undefined
 ----------------------------------------
 
 style'
-  :: AttributeValues StyleAttributes
+  :: StyleAttributes t
   -> ()
 
 style' = undefined
@@ -341,7 +342,7 @@ style' = undefined
 ----------------------------------------
 
 table'
-  :: AttributeValues TableAttributes
+  :: TableAttributes t
   -> ()
 
 table' = undefined
@@ -349,7 +350,7 @@ table' = undefined
 ----------------------------------------
 
 textarea'
-  :: AttributeValues TextareaAttributes
+  :: TextareaAttributes t
   -> ()
 
 textarea' = undefined
@@ -357,7 +358,7 @@ textarea' = undefined
 ----------------------------------------
 
 td'
-  :: AttributeValues TdAttributes
+  :: TdAttributes t
   -> ()
 
 td' = undefined
@@ -365,7 +366,7 @@ td' = undefined
 ----------------------------------------
 
 th'
-  :: AttributeValues ThAttributes
+  :: ThAttributes t
   -> ()
 
 th' = undefined
@@ -373,7 +374,7 @@ th' = undefined
 ----------------------------------------
 
 time'
-  :: AttributeValues TimeAttributes
+  :: TimeAttributes t
   -> ()
 
 time' = undefined
@@ -381,7 +382,7 @@ time' = undefined
 ----------------------------------------
 
 track'
-  :: AttributeValues TrackAttributes
+  :: TrackAttributes t
   -> ()
 
 track' = undefined
@@ -389,10 +390,11 @@ track' = undefined
 ----------------------------------------
 
 video'
-  :: AttributeValues VideoAttributes
+  :: VideoAttributes t
   -> ()
 
 video' = undefined
 
 ----------------------------------------
+-}
 
