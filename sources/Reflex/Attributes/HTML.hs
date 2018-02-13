@@ -1,11 +1,866 @@
+{-# LANGUAGE DataKinds #-}
+
 {-|
 
 Manually generated from definitions in the @typescript@ compiler (in Feb 2018). 
 
 <https://github.com/DefinitelyTyped/DefinitelyTyped/blob/80589689957696f66bfd59960aadd2c5bc2cac31/types/react/index.d.ts#L605>
 
+NOTE on Naming: haskell keywords that conflict with html attributes or elements include: @type@, @data@, @class@, @default@.
+
+
 -}
 module Reflex.Attributes.HTML where
+
+import Reflex.Attributes.CSS
+
+import Data.Vinyl.CoRec (CoRec)
+import Data.Text (Text)
+
+import Prelude (Bool,Either)
+import Data.Proxy (Proxy)
+
+----------------------------------------
+
+----------------------------------------
+
+type (:::) a b = '(a,b)
+
+type Number = Double -- TODO make consistsent with javascript, like via aeson's Scientific
+type LooseNumber = Either Text Number
+
+type Enumeration (symbols :: [Symbol]) = CoRec Proxy symbols
+
+----------------------------------------
+
+type HTMLAttributes =
+
+  -- Standard HTML Attributes
+  [ AccessKey                ::: Text
+  , ClassName                ::: Text
+  , ContentEditable          ::: Bool
+  , ContextMenu              ::: Text
+  , Dir                      ::: Text
+  , Draggable                ::: Bool
+  , Hidden                   ::: Bool
+  , Id                       ::: Text
+  , Lang                     ::: Text
+  , Slot                     ::: Text
+  , SpellCheck               ::: Bool
+  , Style                    ::: CSSProperties
+  , TabIndex                 ::: Number
+  , Title                    ::: Text
+
+  -- Unknown
+  , InputMode                ::: Text
+  , Is                       ::: Text
+  , RadioGroup               ::: Text -- <command>, <menuitem>
+
+  -- WAI-ARIA
+  , Role                     ::: Text
+
+  -- RDFa Attributes
+  , About                    ::: Text
+  , Datatype                 ::: Text
+  , Inlist                   ::: Any
+  , Prefix                   ::: Text
+  , Property                 ::: Text
+  , Resource                 ::: Text
+  , Typeof                   ::: Text
+  , Vocab                    ::: Text
+
+  -- Non-standard Attributes
+  , AutoCapitalize           ::: Text
+  , AutoCorrect              ::: Text
+  , AutoSave                 ::: Text
+  , Color                    ::: Text
+  , ItemProp                 ::: Text
+  , ItemScope                ::: Bool
+  , ItemType                 ::: Text
+  , ItemID                   ::: Text
+  , ItemRef                  ::: Text
+  , Results                  ::: Number
+  , Security                 ::: Text
+  , Unselectable             ::: Bool
+  ]
+
+----------------------------------------
+
+    -- All the WAI-ARIA 1.1 attributes from https://www.w3.org/TR/wai-aria-1.1/
+
+type AriaAttributes =
+  
+        {- Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application. -}
+  [ Aria_Activedescendant    ::: Text
+        {- Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute. -}
+  , Aria_Atomic              ::: Bool
+        {-
+         * Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
+         * presented if they are made.
+         -}
+  , Aria_Autocomplete        ::: Enumeration ["none","inline","list","both"]
+        {- Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user. -}
+  , Aria_Busy                ::: Bool
+        {-
+         * Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
+         * @see aria-pressed @see aria-selected.
+         -}
+  , Aria_Checked             ::: Bool
+        {-
+         * Defines the total number of columns in a table, grid, or treegrid.
+         * @see aria-colindex.
+         -}
+  , Aria_Colcount            ::: Number
+        {-
+         * Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.
+         * @see aria-colcount @see aria-colspan.
+         -}
+  , Aria_Colindex            ::: Number
+        {-
+         * Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.
+         * @see aria-colindex @see aria-rowspan.
+         -}
+  , Aria_Colspan             ::: Number
+        {- Indicates the element that represents the current item within a container or set of related elements. -}
+        Aria_Current         ::: Either Bool (Enumeration ["page", "step", "location", "date", "time"])
+        {-
+         * Identifies the element (or elements) that describes the object.
+         * @see aria-labelledby
+         -}
+        Aria_Describedby     ::: Text
+        {-
+         * Identifies the element that provides a detailed, extended description for the object.
+         * @see aria-describedby.
+         -}
+        Aria_Details         ::: Text
+        {-
+         * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
+         * @see aria-hidden @see aria-readonly.
+         -}
+        Aria_Disabled        ::: Bool
+        {-
+         * Indicates what functions can be performed when a dragged object is released on the drop target.
+         * @deprecated in ARIA 1.1
+         -}
+        Aria_Dropeffect      ::: Enumeration [ "none", "copy", "execute", "link", "move", "popup"]
+        {-
+         * Identifies the element that provides an error message for the object.
+         * @see aria-invalid @see aria-describedby.
+         -}
+        Aria_Errormessage    ::: Text
+        {- Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed. -}
+        Aria_Expanded        ::: Bool
+        {-
+         * Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,
+         * allows assistive technology to override the general default of reading in document source order.
+         -}
+        Aria_Flowto          ::: Text
+        {-
+         * Indicates an element's "grabbed" state in a drag-and-drop operation.
+         * @deprecated in ARIA 1.1
+         -}
+        Aria_Grabbed         ::: Bool
+        {- Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. -}
+        Aria_Haspopup        ::: Either Bool (Enumeration ["menu", "listbox", "tree", "grid", "dialog"])
+        {-
+         * Indicates whether the element is exposed to an accessibility API.
+         * @see aria-disabled.
+         -}
+        Aria_Hidden          ::: Bool
+        {-
+         * Indicates the entered value does not conform to the format expected by the application.
+         * @see aria-errormessage.
+         -}
+        Aria_Invalid         ::: Either Bool (Enumeration ["grammar", "spelling"])
+        {- Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element. -}
+        Aria_Keyshortcuts    ::: Text
+        {-
+         * Defines a string value that labels the current element.
+         * @see aria-labelledby.
+         -}
+        Aria_Label           ::: Text
+        {-
+         * Identifies the element (or elements) that labels the current element.
+         * @see aria-describedby.
+         -}
+        Aria_Labelledby      ::: Text
+        {- Defines the hierarchical level of an element within a structure. -}
+        Aria_Level           ::: Number
+        {- Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region. -}
+        Aria_Live            ::: Enumeration ["off", "assertive", "polite"]
+        {- Indicates whether an element is modal when displayed. -}
+        Aria_Modal           ::: Bool
+        {- Indicates whether a text box accepts multiple lines of input or only a single line. -}
+        Aria_Multiline       ::: Bool
+        {- Indicates that the user may select more than one item from the current selectable descendants. -}
+        Aria_Multiselectable ::: Bool
+        {- Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous. -}
+        Aria_Orientation     ::: Enumeration ["horizontal", "vertical"]
+        {-
+         * Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
+         * between DOM elements where the DOM hierarchy cannot be used to represent the relationship.
+         * @see aria-controls.
+         -}
+        Aria_Owns            ::: Text
+        {-
+         * Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.
+         * A hint could be a sample value or a brief description of the expected format.
+         -}
+        Aria_Placeholder     ::: Text
+        {-
+         * Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
+         * @see aria-setsize.
+         -}
+        Aria_Posinset        ::: Number
+        {-
+         * Indicates the current "pressed" state of toggle buttons.
+         * @see aria-checked @see aria-selected.
+         -}
+        Aria_Pressed         ::: Either Bool (Enumeration ["mixed"])
+        {-
+         * Indicates that the element is not editable, but is otherwise operable.
+         * @see aria-disabled.
+         -}
+        Aria_Readonly        ::: Bool
+        {-
+         * Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
+         * @see aria-atomic.
+         -}
+        Aria_Relevant        ::: Enumeration ["additions", "additions text", "all", "removals", "text"]
+        {- Indicates that user input is required on the element before a form may be submitted. -}
+        Aria_Required        ::: Bool
+        {- Defines a human-readable, author-localized description for the role of an element. -}
+        Aria_Roledescription ::: Text
+        {-
+         * Defines the total number of rows in a table, grid, or treegrid.
+         * @see aria-rowindex.
+         -}
+        Aria_Rowcount        ::: Number
+        {-
+         * Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.
+         * @see aria-rowcount @see aria-rowspan.
+         -}
+        Aria_Rowindex        ::: Number
+        {-
+         * Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.
+         * @see aria-rowindex @see aria-colspan.
+         -}
+        Aria_Rowspan         ::: Number
+        {-
+         * Indicates the current "selected" state of various widgets.
+         * @see aria-checked @see aria-pressed.
+         -}
+        Aria_Selected        ::: Bool
+        {-
+         * Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
+         * @see aria-posinset.
+         -}
+        Aria_Setsize         ::: Number
+        {- Indicates if items in a table or grid are sorted in ascending or descending order. -}
+        Aria_Sort            ::: Enumeration ["none", "ascending", "descending", "other"]
+        {- Defines the maximum allowed value for a range widget. -}
+        Aria_Valuemax        ::: Number
+        {- Defines the minimum allowed value for a range widget. -}
+        Aria_Valuemin        ::: Number
+        {-
+         * Defines the current value for a range widget.
+         * @see aria-valuetext.
+         -}
+        Aria_Valuenow        ::: Number
+        {- Defines the human readable text alternative of aria-valuenow for a range widget. -}
+        Aria_Valuetext       ::: Text
+   ]
+
+
+----------------------------------------
+
+type AllHTMLAttributes = HTMLAttributes ++
+        -- Standard HTML Attributes
+  '[ Accept                  ::: Text
+   , AcceptCharset           ::: Text
+   , Action                  ::: Text
+   , AllowFullScreen         ::: Bool
+   , AllowTransparency       ::: Bool
+   , Alt                     ::: Text
+   , As                      ::: Text
+   , Async                   ::: Bool
+   , AutoComplete            ::: Text
+   , AutoFocus               ::: Bool
+   , AutoPlay                ::: Bool
+   , Capture                 ::: Bool
+   , CellPadding             ::: LooseNumber
+   , CellSpacing             ::: LooseNumber
+   , CharSet                 ::: Text
+   , Challenge               ::: Text
+   , Checked                 ::: Bool
+   , Cite                    ::: Text
+   , ClassID                 ::: Text
+   , Cols                    ::: Number
+   , ColSpan                 ::: Number
+   , Content                 ::: Text
+   , Controls                ::: Bool
+   , Coords                  ::: Text
+   , CrossOrigin             ::: Text
+   , Data                    ::: Text
+   , DateTime                ::: Text
+   , Default                 ::: Bool
+   , Defer                   ::: Bool
+   , Disabled                ::: Bool
+   , Download                ::: Any
+   , EncType                 ::: Text
+   , Form                    ::: Text
+   , FormAction              ::: Text
+   , FormEncType             ::: Text
+   , FormMethod              ::: Text
+   , FormNoValidate          ::: Bool
+   , FormTarget              ::: Text
+   , FrameBorder             ::: LooseNumber
+   , Headers                 ::: Text
+   , Height                  ::: LooseNumber
+   , High                    ::: Number
+   , Href                    ::: Text
+   , HrefLang                ::: Text
+   , HtmlFor                 ::: Text
+   , HttpEquiv               ::: Text
+   , Integrity               ::: Text
+   , KeyParams               ::: Text
+   , KeyType                 ::: Text
+   , Kind                    ::: Text
+   , Label                   ::: Text
+   , List                    ::: Text
+   , Loop                    ::: Bool
+   , Low                     ::: Number
+   , Manifest                ::: Text
+   , MarginHeight            ::: Number
+   , MarginWidth             ::: Number
+   , Max                     ::: LooseNumber
+   , MaxLength               ::: Number
+   , Media                   ::: Text
+   , MediaGroup              ::: Text
+   , Method                  ::: Text
+   , Min                     ::: LooseNumber
+   , MinLength               ::: Number
+   , Multiple                ::: Bool
+   , Muted                   ::: Bool
+   , Name                    ::: Text
+   , Nonce                   ::: Text
+   , NoValidate              ::: Bool
+   , Open                    ::: Bool
+   , Optimum                 ::: Number
+   , Pattern                 ::: Text
+   , Placeholder             ::: Text
+   , PlaysInline             ::: Bool
+   , Poster                  ::: Text
+   , Preload                 ::: Text
+   , ReadOnly                ::: Bool
+   , Rel                     ::: Text
+   , Required                ::: Bool
+   , Reversed                ::: Bool
+   , Rows                    ::: Number
+   , RowSpan                 ::: Number
+   , Sandbox                 ::: Text
+   , Scope                   ::: Text
+   , Scoped                  ::: Bool
+   , Scrolling               ::: Text
+   , Seamless                ::: Bool
+   , Selected                ::: Bool
+   , Shape                   ::: Text
+   , Size                    ::: Number
+   , Sizes                   ::: Text
+   , Span                    ::: Number
+   , Src                     ::: Text
+   , SrcDoc                  ::: Text
+   , SrcLang                 ::: Text
+   , SrcSet                  ::: Text
+   , Start                   ::: Number
+   , Step                    ::: LooseNumber
+   , Summary                 ::: Text
+   , Target                  ::: Text
+   , Type                    ::: Text
+   , UseMap                  ::: Text
+   , Value                   ::: Text --TODO | string[] | number
+   , Width                   ::: LooseNumber
+   , Wmode                   ::: Text
+   , Wrap                    ::: Text
+   ]
+
+----------------------------------------
+
+type AnchorHTMLAttributes = HTMLAttributes ++
+  '[ Download                ::: Any
+   , Href                    ::: Text
+   , HrefLang                ::: Text
+   , Media                   ::: Text
+   , Rel                     ::: Text
+   , Target                  ::: Text
+   , Type                    ::: Text
+   , As                      ::: Text
+   ]
+
+----------------------------------------
+
+type AudioHTMLAttributes = '[] ++ MediaHTMLAttributes
+
+----------------------------------------
+
+type AreaHTMLAttributes = HTMLAttributes ++
+  '[ Alt                     ::: Text
+   , Coords                  ::: Text
+   , Download                ::: Any
+   , Href                    ::: Text
+   , HrefLang                ::: Text
+   , Media                   ::: Text
+   , Rel                     ::: Text
+   , Shape                   ::: Text
+   , Target                  ::: Text
+   ]
+
+----------------------------------------
+
+type BaseHTMLAttributes = HTMLAttributes ++
+  '[ Href                    ::: Text
+   , Target                  ::: Text
+   ]
+
+----------------------------------------
+
+type BlockquoteHTMLAttributes = HTMLAttributes ++
+  '[ Cite                    ::: Text
+   ]
+
+----------------------------------------
+
+type ButtonHTMLAttributes = HTMLAttributes ++
+  '[ AutoFocus               ::: Bool
+   , Disabled                ::: Bool
+   , Form                    ::: Text
+   , FormAction              ::: Text
+   , FormEncType             ::: Text
+   , FormMethod              ::: Text
+   , FormNoValidate          ::: Bool
+   , FormTarget              ::: Text
+   , Name                    ::: Text
+   , Type                    ::: Text
+   , Value                   ::: Text --TODO | string[] | number
+   ]
+
+---------------------------------------
+
+type CanvasHTMLAttributes = HTMLAttributes ++
+  '[ Height                  ::: LooseNumber
+   , Width                   ::: LooseNumber
+   ]
+
+---------------------------------------
+
+type ColHTMLAttributes = HTMLAttributes ++
+  '[ Span                    ::: Number
+   , Width                   ::: LooseNumber
+   ]
+
+----------------------------------------
+
+type ColgroupHTMLAttributes = HTMLAttributes ++
+  '[ Span                    ::: Number
+   ]
+
+----------------------------------------
+
+type DetailsHTMLAttributes = HTMLAttributes ++
+  '[ Open                    ::: Bool
+   ]
+
+----------------------------------------
+
+type DelHTMLAttributes = HTMLAttributes ++
+  '[ Cite                    ::: Text
+   , DateTime                ::: Text
+   ]
+
+----------------------------------------
+
+type EmbedHTMLAttributes = HTMLAttributes ++
+  '[ Height                  ::: LooseNumber
+   , Src                     ::: Text
+   , Type                    ::: Text
+   , Width                   ::: LooseNumber
+   ]
+
+----------------------------------------
+
+type FieldsetHTMLAttributes = HTMLAttributes ++
+  '[ Disabled                ::: Bool
+   , Form                    ::: Text
+   , Name                    ::: Text
+   ]
+
+----------------------------------------
+
+type FormHTMLAttributes = HTMLAttributes ++
+  '[ AcceptCharset           ::: Text
+   , Action                  ::: Text
+   , AutoComplete            ::: Text
+   , EncType                 ::: Text
+   , Method                  ::: Text
+   , Name                    ::: Text
+   , NoValidate              ::: Bool
+   , Target                  ::: Text
+   ]
+
+----------------------------------------
+
+type HtmlHTMLAttributes = HTMLAttributes ++
+  '[ Manifest                ::: Text
+   ]
+
+----------------------------------------
+
+type IframeHTMLAttributes = HTMLAttributes ++
+  '[ AllowFullScreen         ::: Bool
+   , AllowTransparency       ::: Bool
+   , FrameBorder             ::: LooseNumber
+   , Height                  ::: LooseNumber
+   , MarginHeight            ::: Number
+   , MarginWidth             ::: Number
+   , Name                    ::: Text
+   , Sandbox                 ::: Text
+   , Scrolling               ::: Text
+   , Seamless                ::: Bool
+   , Src                     ::: Text
+   , SrcDoc                  ::: Text
+   , Width                   ::: LooseNumber
+   ]
+
+----------------------------------------
+
+type ImgHTMLAttributes = HTMLAttributes ++
+  '[ Alt                     ::: Text
+   , Height                  ::: LooseNumber
+   , Sizes                   ::: Text
+   , Src                     ::: Text
+   , SrcSet                  ::: Text
+   , UseMap                  ::: Text
+   , Width                   ::: LooseNumber
+   ]
+
+----------------------------------------
+
+type InsHTMLAttributes = HTMLAttributes ++
+  '[ Cite                    ::: Text
+   , DateTime                ::: Text
+  ]
+
+----------------------------------------
+
+type InputHTMLAttributes = HTMLAttributes ++
+  '[ Accept                  ::: Text
+   , Alt                     ::: Text
+   , AutoComplete            ::: Text
+   , AutoFocus               ::: Bool
+   , Capture                 ::: Bool -- https://www.w3.org/TR/html-media-capture/#the-capture-attribute
+   , Checked                 ::: Bool
+   , CrossOrigin             ::: Text
+   , Disabled                ::: Bool
+   , Form                    ::: Text
+   , FormAction              ::: Text
+   , FormEncType             ::: Text
+   , FormMethod              ::: Text
+   , FormNoValidate          ::: Bool
+   , FormTarget              ::: Text
+   , Height                  ::: LooseNumber
+   , List                    ::: Text
+   , Max                     ::: LooseNumber
+   , MaxLength               ::: Number
+   , Min                     ::: LooseNumber
+   , MinLength               ::: Number
+   , Multiple                ::: Bool
+   , Name                    ::: Text
+   , Pattern                 ::: Text
+   , Placeholder             ::: Text
+   , ReadOnly                ::: Bool
+   , Required                ::: Bool
+   , Size                    ::: Number
+   , Src                     ::: Text
+   , Step                    ::: LooseNumber
+   , Type                    ::: Text
+   , Value                   ::: Text --TODO | string[] | number
+   , Width                   ::: LooseNumber
+
+--TODO        onChange?: ChangeEventHandler<T>
+   ]
+
+----------------------------------------
+
+type KeygenHTMLAttributes = HTMLAttributes ++
+  '[ AutoFocus               ::: Bool
+   , Challenge               ::: Text
+   , Disabled                ::: Bool
+   , Form                    ::: Text
+   , KeyType                 ::: Text
+   , KeyParams               ::: Text
+   , Name                    ::: Text
+   ]
+
+----------------------------------------
+
+type LabelHTMLAttributes = HTMLAttributes ++
+  '[ Form                    ::: Text
+   , HtmlFor                 ::: Text
+   ]
+
+----------------------------------------
+
+type LiHTMLAttributes = HTMLAttributes ++
+  '[ Value                   ::: Text --TODO | string[] | number
+   ]
+
+----------------------------------------
+
+type LinkHTMLAttributes = HTMLAttributes ++
+  '[ As                      ::: Text
+   , CrossOrigin             ::: Text
+   , Href                    ::: Text
+   , HrefLang                ::: Text
+   , Integrity               ::: Text
+   , Media                   ::: Text
+   , Rel                     ::: Text
+   , Sizes                   ::: Text
+   , Type                    ::: Text
+   ]
+
+----------------------------------------
+
+type MapHTMLAttributes = HTMLAttributes ++
+  '[ Name                    ::: Text
+   ]
+
+----------------------------------------
+
+type MenuHTMLAttributes = HTMLAttributes ++
+  '[ Type                    ::: Text
+   ]
+
+----------------------------------------
+
+type MediaHTMLAttributes = HTMLAttributes ++
+  '[ AutoPlay                ::: Bool
+   , Controls                ::: Bool
+   , ControlsList            ::: Text
+   , CrossOrigin             ::: Text
+   , Loop                    ::: Bool
+   , MediaGroup              ::: Text
+   , Muted                   ::: Bool
+   , Playsinline             ::: Bool
+   , Preload                 ::: Text
+   , Src                     ::: Text
+   ]
+
+----------------------------------------
+
+type MetaHTMLAttributes = HTMLAttributes ++
+  '[ CharSet                 ::: Text
+   , Content                 ::: Text
+   , HttpEquiv               ::: Text
+   , Name                    ::: Text
+   ]
+
+----------------------------------------
+
+type MeterHTMLAttributes = HTMLAttributes ++
+  '[ Form                    ::: Text
+   , High                    ::: Number
+   , Low                     ::: Number
+   , Max                     ::: LooseNumber
+   , Min                     ::: LooseNumber
+   , Optimum                 ::: Number
+   , Value                   ::: Text --TODO | string[] | number
+   ]
+
+----------------------------------------
+
+type QuoteHTMLAttributes = HTMLAttributes ++
+  '[ Cite                    ::: Text
+   ]
+
+----------------------------------------
+
+type ObjectHTMLAttributes = HTMLAttributes ++
+  '[ ClassID                 ::: Text
+   , Data                    ::: Text
+   , Form                    ::: Text
+   , Height                  ::: LooseNumber
+   , Name                    ::: Text
+   , Type                    ::: Text
+   , UseMap                  ::: Text
+   , Width                   ::: LooseNumber
+   , Wmode                   ::: Text
+   ]
+
+----------------------------------------
+
+type OlHTMLAttributes = HTMLAttributes ++
+  '[ Reversed                ::: Bool
+   , Start                   ::: Number
+   ]
+
+----------------------------------------
+
+type OptgroupHTMLAttributes = HTMLAttributes ++
+  '[ Disabled                ::: Bool
+   , Label                   ::: Text
+   ]
+
+----------------------------------------
+
+type OptionHTMLAttributes = HTMLAttributes ++
+  '[ Disabled                ::: Bool
+   , Label                   ::: Text
+   , Selected                ::: Bool
+   , Value                   ::: Text --TODO | string[] | number
+   ]
+
+----------------------------------------
+
+type OutputHTMLAttributes = HTMLAttributes ++
+  '[ Form                    ::: Text
+   , HtmlFor                 ::: Text
+   , Name                    ::: Text
+   ]
+
+----------------------------------------
+
+type ParamHTMLAttributes = HTMLAttributes ++
+  '[ Name                    ::: Text
+   , Value                   ::: Text --TODO | string[ ] | number
+   ]
+
+----------------------------------------
+
+type ProgressHTMLAttributes = HTMLAttributes ++
+  '[ Max                     ::: LooseNumber
+   , Value                   ::: Text --TODO | string[ ] | number
+   ]
+
+----------------------------------------
+
+type ScriptHTMLAttributes = HTMLAttributes ++
+  '[ Async                   ::: Bool
+   , CharSet                 ::: Text
+   , CrossOrigin             ::: Text
+   , Defer                   ::: Bool
+   , Integrity               ::: Text
+   , Nonce                   ::: Text
+   , Src                     ::: Text
+   , Type                    ::: Text
+   ]
+
+----------------------------------------
+
+type SelectHTMLAttributes = HTMLAttributes ++
+  '[ AutoFocus               ::: Bool
+   , Disabled                ::: Bool
+   , Form                    ::: Text
+   , Multiple                ::: Bool
+   , Name                    ::: Text
+   , Required                ::: Bool
+   , Size                    ::: Number
+   , Value                   ::: Text --TODO | string[ ] | number
+   --TODO     onChange?: ChangeEventHandler<T>
+   ]
+
+----------------------------------------
+
+type SourceHTMLAttributes = HTMLAttributes ++
+  '[ Media                   ::: Text
+   , Sizes                   ::: Text
+   , Src                     ::: Text
+   , SrcSet                  ::: Text
+   , Type                    ::: Text
+   ]
+
+----------------------------------------
+
+type StyleHTMLAttributes = HTMLAttributes ++
+  '[ Media                   ::: Text
+   , Nonce                   ::: Text
+   , Scoped                  ::: Bool
+   , Type                    ::: Text
+   ]
+
+----------------------------------------
+
+type TableHTMLAttributes = HTMLAttributes ++
+  '[ CellPadding             ::: LooseNumber
+   , CellSpacing             ::: LooseNumber
+   , Summary                 ::: Text
+   ]
+
+----------------------------------------
+
+type TextareaHTMLAttributes = HTMLAttributes ++
+  '[ AutoComplete            ::: Text
+   , AutoFocus               ::: Bool
+   , Cols                    ::: Number
+   , DirName                 ::: Text
+   , Disabled                ::: Bool
+   , Form                    ::: Text
+   , MaxLength               ::: Number
+   , MinLength               ::: Number
+   , Name                    ::: Text
+   , Placeholder             ::: Text
+   , ReadOnly                ::: Bool
+   , Required                ::: Bool
+   , Rows                    ::: Number
+   , Value                   ::: Text --TODO | string[ ] | number
+   , Wrap                    ::: [Text]
+
+--TODO        onChange?: ChangeEventHandler<T>
+   ]
+
+----------------------------------------
+
+type TdHTMLAttributes = HTMLAttributes ++
+  '[ ColSpan                 ::: Number
+   , Headers                 ::: Text
+   , RowSpan                 ::: Number
+   , Scope                   ::: Text
+   ]
+
+----------------------------------------
+
+type ThHTMLAttributes = HTMLAttributes ++
+  '[ ColSpan                 ::: Number
+   , Headers                 ::: Text
+   , RowSpan                 ::: Number
+   , Scope                   ::: Text
+   ]
+
+----------------------------------------
+
+type TimeHTMLAttributes = HTMLAttributes ++
+  '[ DateTime                ::: Text
+   ]
+
+----------------------------------------
+
+type TrackHTMLAttributes = HTMLAttributes ++
+  '[ Default                 ::: Bool
+   , Kind                    ::: Text
+   , Label                   ::: Text
+   , Src                     ::: Text
+   , SrcLang                 ::: Text
+   ]
+
+----------------------------------------
+
+type VideoHTMLAttributes = MediaHTMLAttributes ++
+  '[ Height                  ::: LooseNumber
+   , PlaysInline             ::: Bool
+   , Poster                  ::: Text
+   , Width                   ::: LooseNumber
+   ]
+
+----------------------------------------
 
 {-
 

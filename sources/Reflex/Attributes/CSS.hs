@@ -10,6 +10,17 @@ Manually generated from definitions in the @typescript@ compiler (in Feb 2018).
 -}
 module Reflex.Attributes.CSS where
 
+import Data.Map (Map)
+
+import Data.Text (Text)
+--import qualified Data.Text as T
+
+----------------------------------------
+
+type CSSProperties = Map Text Text
+
+----------------------------------------
+
 {-
 
     // See CSS 3 CSS-wide keywords https://www.w3.org/TR/css3-values/#common-keywords
