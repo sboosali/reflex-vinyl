@@ -132,9 +132,31 @@ library
                  Reflex.Attributes.CSS
                  Reflex.Attributes.Loose
 
+                 DOM
+                 
+                 DOM.Element
+                 DOM.Element.Kind
+                 DOM.Element.Singletons
+                 
+                 DOM.Attribute
+                 DOM.Attribute.Kind
+                 DOM.Attribute.Singletons
+                 DOM.Attribute.Types
+                 DOM.Attribute.Record
+                 DOM.Attribute.Core
+
+                 DOM.Event
+                 DOM.Event.Kind
+                 DOM.Event.Singletons
+                 
+                 DOM.CSS
+                 DOM.CSS.Kind
+                 DOM.CSS.Singletons
+
                  Reflex.Vinyl.Example                
  other-modules:
 
+                 DOM.Extra
                  Reflex.Vinyl.Extra            
                  -- Paths_reflex_vinyl
 -- autogen-modules:

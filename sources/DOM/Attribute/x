@@ -1,0 +1,428 @@
+
+
+
+
+   Download                :: Attribute (Any) 'DOWNLOAD
+   Href                    :: Attribute (Text) 'HREF
+   HrefLang                :: Attribute (Text) 'HREFLANG
+   Media                   :: Attribute (Text) 'MEDIA
+   Rel                     :: Attribute (Text) 'REL
+   Target                  :: Attribute (Text) 'TARGET
+   Type                    :: Attribute (Text) 'TYPE
+   As                      :: Attribute (Text) 'AS
+
+
+
+
+
+
+   Alt                     :: Attribute (Text) 'ALT
+   Coords                  :: Attribute (Text) 'COORDS
+   Download                :: Attribute (Any) 'DOWNLOAD
+   Href                    :: Attribute (Text) 'HREF
+   HrefLang                :: Attribute (Text) 'HREFLANG
+   Media                   :: Attribute (Text) 'MEDIA
+   Rel                     :: Attribute (Text) 'REL
+   Shape                   :: Attribute (Text) 'SHAPE
+   Target                  :: Attribute (Text) 'TARGET
+
+
+
+
+
+   Href                    :: Attribute (Text) 'HREF
+   Target                  :: Attribute (Text) 'TARGET
+
+
+
+
+
+   Cite                    :: Attribute (Text) 'CITE
+
+
+
+
+
+   AutoFocus               :: Attribute (Bool) 'AUTOFOCUS
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Form                    :: Attribute (Text) 'FORM
+   FormAction              :: Attribute (Text) 'FORMACTION
+   FormEncType             :: Attribute (Text) 'FORMENCTYPE
+   FormMethod              :: Attribute (Text) 'FORMMETHOD
+   FormNoValidate          :: Attribute (Bool) 'FORMNOVALIDATE
+   FormTarget              :: Attribute (Text) 'FORMTARGET
+   Name                    :: Attribute (Text) 'NAME
+   Type                    :: Attribute (Text) 'TYPE
+   Value                   :: Attribute (Text) 'VALUE
+   --TODO | string[] | number
+
+
+
+   Height                  :: Attribute (LooseNumber) 'HEIGHT
+   Width                   :: Attribute (LooseNumber) 'WIDTH
+
+
+
+   Span                    :: Attribute (Number) 'SPAN
+   Width                   :: Attribute (LooseNumber) 'WIDTH
+
+
+
+
+
+   Span                    :: Attribute (Number) 'SPAN
+
+
+
+
+
+   Open                    :: Attribute (Bool) 'OPEN
+
+
+
+
+
+   Cite                    :: Attribute (Text) 'CITE
+   DateTime                :: Attribute (Text) 'DATETIME
+
+
+
+
+
+   Height                  :: Attribute (LooseNumber) 'HEIGHT
+   Src                     :: Attribute (Text) 'SRC
+   Type                    :: Attribute (Text) 'TYPE
+   Width                   :: Attribute (LooseNumber) 'WIDTH
+
+
+
+
+
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Form                    :: Attribute (Text) 'FORM
+   Name                    :: Attribute (Text) 'NAME
+
+
+
+
+
+   AcceptCharset           :: Attribute (Text) 'ACCEPTCHARSET
+   Action                  :: Attribute (Text) 'ACTION
+   AutoComplete            :: Attribute (Text) 'AUTOCOMPLETE
+   EncType                 :: Attribute (Text) 'ENCTYPE
+   Method                  :: Attribute (Text) 'METHOD
+   Name                    :: Attribute (Text) 'NAME
+   NoValidate              :: Attribute (Bool) 'NOVALIDATE
+   Target                  :: Attribute (Text) 'TARGET
+
+
+
+
+
+   Manifest                :: Attribute (Text) 'MANIFEST
+
+
+
+
+
+   AllowFullScreen         :: Attribute (Bool) 'ALLOWFULLSCREEN
+   AllowTransparency       :: Attribute (Bool) 'ALLOWTRANSPARENCY
+   FrameBorder             :: Attribute (LooseNumber) 'FRAMEBORDER
+   Height                  :: Attribute (LooseNumber) 'HEIGHT
+   MarginHeight            :: Attribute (Number) 'MARGINHEIGHT
+   MarginWidth             :: Attribute (Number) 'MARGINWIDTH
+   Name                    :: Attribute (Text) 'NAME
+   Sandbox                 :: Attribute (Text) 'SANDBOX
+   Scrolling               :: Attribute (Text) 'SCROLLING
+   Seamless                :: Attribute (Bool) 'SEAMLESS
+   Src                     :: Attribute (Text) 'SRC
+   SrcDoc                  :: Attribute (Text) 'SRCDOC
+   Width                   :: Attribute (LooseNumber) 'WIDTH
+
+
+
+
+
+   Alt                     :: Attribute (Text) 'ALT
+   Height                  :: Attribute (LooseNumber) 'HEIGHT
+   Sizes                   :: Attribute (Text) 'SIZES
+   Src                     :: Attribute (Text) 'SRC
+   SrcSet                  :: Attribute (Text) 'SRCSET
+   UseMap                  :: Attribute (Text) 'USEMAP
+   Width                   :: Attribute (LooseNumber) 'WIDTH
+
+
+
+
+
+   Cite                    :: Attribute (Text) 'CITE
+   DateTime                :: Attribute (Text) 'DATETIME
+
+
+
+   Accept                  :: Attribute (Text) 'ACCEPT
+   Alt                     :: Attribute (Text) 'ALT
+   AutoComplete            :: Attribute (Text) 'AUTOCOMPLETE
+   AutoFocus               :: Attribute (Bool) 'AUTOFOCUS
+   Capture                 :: Attribute (Bool) 'CAPTURE
+     -- https://www.w3.org/TR/html-media-capture/#the-capture-attribute
+   Checked                 :: Attribute (Bool) 'CHECKED
+   CrossOrigin             :: Attribute (Text) 'CROSSORIGIN
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Form                    :: Attribute (Text) 'FORM
+   FormAction              :: Attribute (Text) 'FORMACTION
+   FormEncType             :: Attribute (Text) 'FORMENCTYPE
+   FormMethod              :: Attribute (Text) 'FORMMETHOD
+   FormNoValidate          :: Attribute (Bool) 'FORMNOVALIDATE
+   FormTarget              :: Attribute (Text) 'FORMTARGET
+   Height                  :: Attribute (LooseNumber) 'HEIGHT
+   List                    :: Attribute (Text) 'LIST
+   Max                     :: Attribute (LooseNumber) 'MAX
+   MaxLength               :: Attribute (Number) 'MAXLENGTH
+   Min                     :: Attribute (LooseNumber) 'MIN
+   MinLength               :: Attribute (Number) 'MINLENGTH
+   Multiple                :: Attribute (Bool) 'MULTIPLE
+   Name                    :: Attribute (Text) 'NAME
+   Pattern                 :: Attribute (Text) 'PATTERN
+   Placeholder             :: Attribute (Text) 'PLACEHOLDER
+   ReadOnly                :: Attribute (Bool) 'READONLY
+   Required                :: Attribute (Bool) 'REQUIRED
+   Size                    :: Attribute (Number) 'SIZE
+   Src                     :: Attribute (Text) 'SRC
+   Step                    :: Attribute (LooseNumber) 'STEP
+   Type                    :: Attribute (Text) 'TYPE
+   Value                   :: Attribute (Text) 'VALUE
+     --TODO | string[] | number
+   Width                   :: Attribute (LooseNumber) 'WIDTH
+
+   AutoFocus               :: Attribute (Bool) 'AUTOFOCUS
+   Challenge               :: Attribute (Text) 'CHALLENGE
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Form                    :: Attribute (Text) 'FORM
+   KeyType                 :: Attribute (Text) 'KEYTYPE
+   KeyParams               :: Attribute (Text) 'KEYPARAMS
+   Name                    :: Attribute (Text) 'NAME
+
+   Form                    :: Attribute (Text) 'FORM
+   HtmlFor                 :: Attribute (Text) 'HTMLFOR
+
+   As                      :: Attribute (Text) 'AS
+   CrossOrigin             :: Attribute (Text) 'CROSSORIGIN
+   Href                    :: Attribute (Text) 'HREF
+   HrefLang                :: Attribute (Text) 'HREFLANG
+   Integrity               :: Attribute (Text) 'INTEGRITY
+   Media                   :: Attribute (Text) 'MEDIA
+   Rel                     :: Attribute (Text) 'REL
+   Sizes                   :: Attribute (Text) 'SIZES
+   Type                    :: Attribute (Text) 'TYPE
+
+
+
+
+
+   Name                    :: Attribute (Text) 'NAME
+
+
+
+
+
+   Type                    :: Attribute (Text) 'TYPE
+
+
+
+
+
+   AutoPlay                :: Attribute (Bool) 'AUTOPLAY
+   Controls                :: Attribute (Bool) 'CONTROLS
+   ControlsList            :: Attribute (Text) 'CONTROLSLIST
+   CrossOrigin             :: Attribute (Text) 'CROSSORIGIN
+   Loop                    :: Attribute (Bool) 'LOOP
+   MediaGroup              :: Attribute (Text) 'MEDIAGROUP
+   Muted                   :: Attribute (Bool) 'MUTED
+   Playsinline             :: Attribute (Bool) 'PLAYSINLINE
+   Preload                 :: Attribute (Text) 'PRELOAD
+   Src                     :: Attribute (Text) 'SRC
+
+
+
+
+
+   CharSet                 :: Attribute (Text) 'CHARSET
+   Content                 :: Attribute (Text) 'CONTENT
+   HttpEquiv               :: Attribute (Text) 'HTTPEQUIV
+   Name                    :: Attribute (Text) 'NAME
+
+
+
+
+
+   Form                    :: Attribute (Text) 'FORM
+   High                    :: Attribute (Number) 'HIGH
+   Low                     :: Attribute (Number) 'LOW
+   Max                     :: Attribute (LooseNumber) 'MAX
+   Min                     :: Attribute (LooseNumber) 'MIN
+   Optimum                 :: Attribute (Number) 'OPTIMUM
+
+
+   Cite                    :: Attribute (Text) 'CITE
+
+
+
+
+
+   ClassID                 :: Attribute (Text) 'CLASSID
+   Data                    :: Attribute (Text) 'DATA
+   Form                    :: Attribute (Text) 'FORM
+   Height                  :: Attribute (LooseNumber) 'HEIGHT
+   Name                    :: Attribute (Text) 'NAME
+   Type                    :: Attribute (Text) 'TYPE
+   UseMap                  :: Attribute (Text) 'USEMAP
+   Width                   :: Attribute (LooseNumber) 'WIDTH
+   Wmode                   :: Attribute (Text) 'WMODE
+
+
+
+
+
+   Reversed                :: Attribute (Bool) 'REVERSED
+   Start                   :: Attribute (Number) 'START
+
+
+
+
+
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Label                   :: Attribute (Text) 'LABEL
+
+
+
+
+
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Label                   :: Attribute (Text) 'LABEL
+   Selected                :: Attribute (Bool) 'SELECTED
+
+
+
+   Form                    :: Attribute (Text) 'FORM
+   HtmlFor                 :: Attribute (Text) 'HTMLFOR
+   Name                    :: Attribute (Text) 'NAME
+
+
+
+
+
+   Name                    :: Attribute (Text) 'NAME
+
+
+
+   Max                     :: Attribute (LooseNumber) 'MAX
+
+
+
+   Async                   :: Attribute (Bool) 'ASYNC
+   CharSet                 :: Attribute (Text) 'CHARSET
+   CrossOrigin             :: Attribute (Text) 'CROSSORIGIN
+   Defer                   :: Attribute (Bool) 'DEFER
+   Integrity               :: Attribute (Text) 'INTEGRITY
+   Nonce                   :: Attribute (Text) 'NONCE
+   Src                     :: Attribute (Text) 'SRC
+   Type                    :: Attribute (Text) 'TYPE
+
+
+
+
+
+   AutoFocus               :: Attribute (Bool) 'AUTOFOCUS
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Form                    :: Attribute (Text) 'FORM
+   Multiple                :: Attribute (Bool) 'MULTIPLE
+   Name                    :: Attribute (Text) 'NAME
+   Required                :: Attribute (Bool) 'REQUIRED
+   Size                    :: Attribute (Number) 'SIZE
+
+
+
+
+   Media                   :: Attribute (Text) 'MEDIA
+   Sizes                   :: Attribute (Text) 'SIZES
+   Src                     :: Attribute (Text) 'SRC
+   SrcSet                  :: Attribute (Text) 'SRCSET
+   Type                    :: Attribute (Text) 'TYPE
+
+
+
+
+
+   Media                   :: Attribute (Text) 'MEDIA
+   Nonce                   :: Attribute (Text) 'NONCE
+   Scoped                  :: Attribute (Bool) 'SCOPED
+   Type                    :: Attribute (Text) 'TYPE
+
+
+
+
+
+   CellPadding             :: Attribute (LooseNumber) 'CELLPADDING
+   CellSpacing             :: Attribute (LooseNumber) 'CELLSPACING
+   Summary                 :: Attribute (Text) 'SUMMARY
+
+
+
+
+
+   AutoComplete            :: Attribute (Text) 'AUTOCOMPLETE
+   AutoFocus               :: Attribute (Bool) 'AUTOFOCUS
+   Cols                    :: Attribute (Number) 'COLS
+   DirName                 :: Attribute (Text) 'DIRNAME
+   Disabled                :: Attribute (Bool) 'DISABLED
+   Form                    :: Attribute (Text) 'FORM
+   MaxLength               :: Attribute (Number) 'MAXLENGTH
+   MinLength               :: Attribute (Number) 'MINLENGTH
+   Name                    :: Attribute (Text) 'NAME
+   Placeholder             :: Attribute (Text) 'PLACEHOLDER
+   ReadOnly                :: Attribute (Bool) 'READONLY
+   Required                :: Attribute (Bool) 'REQUIRED
+   Rows                    :: Attribute (Number) 'ROWS
+   Wrap                    ::: Attribute (Text]) 'WRAP
+
+
+
+   ColSpan                 :: Attribute (Number) 'COLSPAN
+   Headers                 :: Attribute (Text) 'HEADERS
+   RowSpan                 :: Attribute (Number) 'ROWSPAN
+   Scope                   :: Attribute (Text) 'SCOPE
+
+
+
+
+
+   ColSpan                 :: Attribute (Number) 'COLSPAN
+   Headers                 :: Attribute (Text) 'HEADERS
+   RowSpan                 :: Attribute (Number) 'ROWSPAN
+   Scope                   :: Attribute (Text) 'SCOPE
+
+
+
+
+
+   DateTime                :: Attribute (Text) 'DATETIME
+
+
+
+
+
+   Default                 :: Attribute (Bool) 'DEFAULT
+   Kind                    :: Attribute (Text) 'KIND
+   Label                   :: Attribute (Text) 'LABEL
+   Src                     :: Attribute (Text) 'SRC
+   SrcLang                 :: Attribute (Text) 'SRCLANG
+
+
+
+
+
+   Height                  :: Attribute (LooseNumber) 'HEIGHT
+   PlaysInline             :: Attribute (Bool) 'PLAYSINLINE
+   Poster                  :: Attribute (Text) 'POSTER
+   Width                   :: Attribute (LooseNumber) 'WIDTH
