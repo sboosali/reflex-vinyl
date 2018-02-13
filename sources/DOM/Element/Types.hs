@@ -264,13 +264,13 @@ which are thus always well-defined and satisfying KnownSymbol,
 but we still must require that constraint.
 
 -}
-elementText
+reflectElementSymbol
   :: forall element proxy.
      ( KnownElementSymbol element
      )
   => proxy element
   -> Text
-elementText _ = s2t s
+reflectElementSymbol _ = s2t s
   where
   s = symbolVal (Proxy :: Proxy (ElementSymbol element))
 

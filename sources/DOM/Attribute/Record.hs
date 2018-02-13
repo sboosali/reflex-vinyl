@@ -13,49 +13,56 @@ import Reflex
 import Data.Vinyl (Rec)
 
 ----------------------------------------
-----------------------------------------
 
-type StaticAttributesOf element
-  = StaticAttributes (ElementAttributes element)
-  --TODO naming StaticElementAttributes?
+--type AttributesOf element = DynamicAttributesOf element 
 
 ----------------------------------------
 
-type AttributesOf element t = DynamicAttributesOf element t
+{-|
 
-type DynamicAttributesOf element t
-  = DynamicAttributes t (ElementAttributes element)
-  --TODO naming DynamicElementAttributes?
+@AttributeF f@ is isomorphic to @(f ':.' 'AttributesOf')@,
+i.e. it's a specialized functor composition (for convenience). 
 
-----------------------------------------
+@AttributeF@ of some functor, is a functor of some type:
 
-type StaticAttributes = Rec StaticAttribute --TODO naming
---type AttributeValues = Rec AttributeValue --TODO naming
+@
+AttributeF f attribute
+~
+f _
+@
 
-----------------------------------------
+@
+AttributeF Identity attribute
+~
+_
+@
 
-type DynamicAttributes t = Rec (DynamicAttribute t) --TODO naming
+-}
+newtype AttributeF f attribute = AttributeF
+ (f (AttributeType attribute))
 
 ----------------------------------------
 
 {-|
 
 -}
-newtype StaticAttribute attribute = StaticAttribute
- -- { getStaticAttribute ::
-      (AttributeType attribute)
- -- }
-
--- newtype AttributeValue attribute = AttributeValue
---   { getAttribute ::
---       AttributeType attribute
---   }
-
-----------------------------------------
+type DynamicAttributesOf element t
+  = DynamicAttributes t (ElementAttributes element)
+  --TODO naming DynamicElementAttributes?
 
 {-|
 
-isomorphic to @('Dynamic' t ':.' 'StaticAttribute')@
+e.g.
+
+@
+DynamicAttributes t [
+
+-}
+type DynamicAttributes t = Rec (DynamicAttribute t) --TODO naming
+
+{-|
+
+isomorphic to @('Dynamic' t ':.' 'AttributesOf')@
 
 -}
 newtype DynamicAttribute t attribute = DynamicAttribute
@@ -258,5 +265,78 @@ type TrackConfig      = StaticAttributes TrackAttributes
 type VideoConfig      = StaticAttributes VideoAttributes
 
 ----------------------------------------
+
+
+
+
+
+
+type StaticAttributes = Rec StaticAttribute --TODO naming
+--type AttributeValues = Rec AttributeValue --TODO naming
+
+{-|
+
+-}
+newtype StaticAttribute attribute = StaticAttribute
+ -- { getStaticAttribute ::
+      (AttributeType attribute)
+ -- }
+
+-- newtype AttributeValue attribute = AttributeValue
+--   { getAttribute ::
+--       AttributeType attribute
+--   }
+
+type StaticAttributesOf element
+  = StaticAttributes (ElementAttributes element)
+  --TODO naming StaticElementAttributes?
+
+
+
+type StaticAttributesOf element
+  = StaticAttributes (ElementAttributes element)
+  --TODO naming StaticElementAttributes?
+
+
+
+
+{-|
+
+e.g.
+
+@
+@
+
+-}
+newtype EventF f t a = EventF
+ ( Event t (f a)
+ )
+
+{-|
+
+e.g.
+
+@
+@
+
+-}
+newtype BehaviorF f t a = BehaviorF
+ ( Behavior t (f a)
+ )
+
+{-|
+
+e.g.
+
+@
+@
+
+-}
+newtype DynamicF f t a = DynamicF
+ ( Dynamic t (f a)
+ )
+
+
+
 
 -}

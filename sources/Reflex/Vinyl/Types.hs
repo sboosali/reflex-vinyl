@@ -17,7 +17,91 @@ import Data.Vinyl
 
 import qualified Control.Lens as L
 
+import Prelude.Spiros
+
 ----------------------------------------
+
+{-|
+
+e.g.
+
+@
+@
+
+-}
+type Events t = Rec (EventF Identity t)
+
+{-|
+
+e.g.
+
+@
+@
+
+-}
+type Behaviors t = Rec (BehaviorF Identity t)
+
+{-|
+
+e.g.
+
+@
+Dynamics t [Bool,String]
+~
+Rec (DynamicF Identity t) [Bool,String]
+~
+( DynamicF Identity t Bool, DynamicF Identity t String )
+~
+( Dynamic t (Identity Bool), Dynamic t (Identity String) )
+~
+( Dynamic t Bool, Dynamic t String )
+@
+
+-}
+type Dynamics t = Rec (DynamicF Identity t)
+
+--------------------------------------
+
+{-|
+
+e.g.
+
+@
+@
+
+-}
+newtype EventF f t a = EventF
+ ( Event t (f a)
+ )
+
+{-|
+
+e.g.
+
+@
+@
+
+-}
+newtype BehaviorF f t a = BehaviorF
+ ( Behavior t (f a)
+ )
+
+{-|
+
+@
+DynamicF f t
+@
+
+ia isomorphic to:
+
+@
+('Dynamic' t ':.' f)
+@
+
+-}
+newtype DynamicF f t a = DynamicF
+ ( Dynamic t (f a)
+ )
 
 ----------------------------------------
 

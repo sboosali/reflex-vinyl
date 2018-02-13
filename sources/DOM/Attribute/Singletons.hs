@@ -19,6 +19,12 @@ import DOM.Attribute.Kind
 
 this type-level function is total.
 
+has "kind":
+
+@
+AttributeType :: 'ATTRIBUTE' -> * 
+@
+
 -}
 type family AttributeType (attribute :: ATTRIBUTE) :: * where
 

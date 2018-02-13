@@ -6,6 +6,7 @@ module Reflex.DOM.Typed where
 
 import DOM.Element
 import DOM.Attribute.Record
+import DOM.Attribute.Core
 
 import qualified Reflex     as R
 import qualified Reflex.Dom as R
@@ -54,9 +55,11 @@ elementWith'
   -> m          a
   -> m (EL m t, a)
 
-elementWith' _element attributes = R.elDynAttr'
-  (elementText _element)
-  undefined
+elementWith' _element rAttributes child
+  = R.elDynAttr' name dAttributes child
+  where
+  name = reflectElementSymbol _element
+  dAttributes = fromDynamicAttributes rAttributes
 
 ----------------------------------------
 

@@ -1,3 +1,4 @@
+{-# LANGUAGE DataKinds, TypeOperators, PolyKinds #-}
 
 {-|
 
@@ -6,16 +7,109 @@ Naming: the suffix resolves the conflict with haskell prelude functions (like @i
 -}
 module DOM.Attribute.Core where
 
---import DOM.Extra
---import DOM.Attribute.Kind
---import DOM.Attribute.Singletons
---import DOM.Attribute.Types
+import DOM.Extra
+import DOM.Attribute.Kind
+import DOM.Attribute.Singletons
+import DOM.Attribute.Types
 import DOM.Attribute.Record
 
+import Reflex
+
+import Data.Vinyl 
+
 import Prelude (undefined)
+import Prelude.Spiros hiding (Text)
 
 ----------------------------------------
 
+{-|
+
+has kind:
+
+@
+AttributeTypes :: [ATTRIBUTE] -> [*]
+@
+
+semantically, it's:
+
+@
+type AttributeTypes attributes = 'MAP' 'AttributeType' attributes
+@
+
+but applications of a type family must currently be saturated.
+
+-}
+type family AttributeTypes (attributes :: [ATTRIBUTE]) :: [*] where
+   AttributeTypes '[]                       = '[]
+   AttributeTypes (attribute ': attributes) = AttributeType attribute ': AttributeTypes attributes
+
+{-NOTE inlined, otherwise:
+
+    • The type family ‘AttributeType’ should have 1 argument, but has been given none
+    • In the type synonym declaration for ‘AttributeTypes’
+   |
+34 | type AttributeTypes attributes = MAP AttributeType attributes
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-}
+
+sequenceAttributeFs
+  :: ( Applicative f
+     , types ~ AttributeTypes attributes
+     )
+  =>    Rec (AttributeF f) attributes
+  -> f (Rec  Identity      types)
+sequenceAttributeFs
+  = undefined
+
+rebaseAttributeFs
+  :: ( types ~ AttributeTypes attributes
+     )
+  => Rec (AttributeF f) attributes
+  -> Rec f              types
+rebaseAttributeFs
+  = undefined
+
+----------------------------------------
+
+fromDynamicAttributes
+  :: ( Reflex t
+     )
+  => DynamicAttributes t attributes
+  -> Dynamic           t (Map Text Text)
+
+fromDynamicAttributes
+  = undefined
+
+{-NOTE
+
+DynamicAttributes t
+=
+Rec (DynamicAttribute t) 
+~ 
+Rec (Dynamic t :. AttributesOf)
+~ 
+Rec (Dynamic t _)
+
+-}
+
+----------------------------------------
+
+{-TODO efficiency?
+
+-- :: fromAttribute :: DynamicAttributes t attributes -> Dynamic (Map Text Text)
+-- 
+-- DynamicAttributes t = Rec (DynamicAttribute t) 
+
+-- :: fromAttribute :: DynamicAttribute t attribute -> Dynamic (Text,Text)
+-- 
+-- DynamicAttribute ~ @('Dynamic' t ':.' 'AttributesOf')@
+
+
+-- Attributes -> Map Text Text
+
+-}
+
+----------------------------------------
 -- element :: HTMLAttributes 
 
 ----------------------------------------
