@@ -292,7 +292,7 @@ myHaskellOverlaysWith = pkgs: self: super: let
              #      { owner           :: String
              #        repo            :: String
              #        rev             :: String
-             #        fetchSubmodules :: Bool
+0             #        fetchSubmodules :: Bool
              #        sha256          :: String
              #      } 
 

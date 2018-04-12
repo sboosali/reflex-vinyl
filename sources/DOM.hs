@@ -1,3 +1,11 @@
+
+{-|
+
+naming conflicts between elements and attributes
+
+(e.g. @<input>@ and @<form input="">@)
+
+-}
 module DOM
  ( module DOM.Event
  , module DOM.Event.Kind
@@ -5,9 +13,9 @@ module DOM
  , module DOM.Event.Types
  , module DOM.Event.Core
 
- -- , module DOM.Element
- -- , module DOM.Element.Kind
- -- , module DOM.Element.Singletons
+ , module Element
+-- , module DOM.Element.Kind
+-- , module DOM.Element.Singletons
  , module DOM.Element.Types
  , module DOM.Element.Core
  
@@ -32,7 +40,9 @@ import DOM.Event.Singletons
 import DOM.Event.Types
 import DOM.Event.Core
 
--- import DOM.Element
+import qualified DOM.Element as Element hiding
+ ( Input, INPUT
+ )
 -- import DOM.Element.Kind
 -- import DOM.Element.Singletons
 import DOM.Element.Types
